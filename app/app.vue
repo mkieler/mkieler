@@ -1,4 +1,6 @@
-<script setup>
+<script setup lang="ts">
+const runtimeConfig = useRuntimeConfig()
+
 useHead({
   meta: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
@@ -11,16 +13,32 @@ useHead({
   }
 })
 
-const title = 'Nuxt Starter Template'
-const description = 'A production-ready starter template powered by Nuxt UI. Build beautiful, accessible, and performant applications in minutes, not hours.'
+const siteTitle = 'Matthias Kieler · Laravel + Nuxt Engineer'
+const siteDescription = 'Fractional CTO and senior full-stack developer focused on Laravel backends and Nuxt frontends that stay fast, accessible, and maintainable.'
+
+const siteUrl = runtimeConfig.public.siteUrl || 'https://mkieler.dev'
+const ogImage = `${siteUrl.replace(/\/$/, '')}/og-image.jpg`
+
+const navigationItems = [
+  { label: 'Stacks', href: '/#stacks' },
+  { label: 'Experience', href: '/#experience' },
+  { label: 'Projects', href: '/#projects' },
+  { label: 'Contact', href: '/#contact' }
+]
+
+const linkedinLink = runtimeConfig.public.linkedinUrl || 'https://www.linkedin.com/in/mattiaskieler'
+const contactLink = '/#contact'
 
 useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
-  ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/starter-light.png',
-  twitterImage: 'https://ui.nuxt.com/assets/templates/nuxt/starter-light.png',
+  title: siteTitle,
+  description: siteDescription,
+  ogTitle: siteTitle,
+  ogDescription: siteDescription,
+  ogImage,
+  ogUrl: siteUrl,
+  twitterTitle: siteTitle,
+  twitterDescription: siteDescription,
+  twitterImage: ogImage,
   twitterCard: 'summary_large_image'
 })
 </script>
@@ -35,30 +53,25 @@ useSeoMeta({
       </template>
 
       <UNavigationMenu
-          :items="[
-            { label: 'Services', href: 'https://ui.nuxt.com' },
-            { label: 'Hvorfor mig', href: 'https://ui.nuxt.com/components' },
-            { label: 'Noget andet', href: 'https://ui.nuxt.com/templates' }
-          ]"
-          class="hidden md:inline-flex"
-        />
+        :items="navigationItems"
+        class="hidden md:inline-flex"
+      />
 
       <template #right>
         <UColorModeButton />
 
         <UButton
-          to="https://github.com/nuxt-ui-templates/starter"
+          :to="linkedinLink"
           target="_blank"
-          icon="i-simple-icons-github"
-          aria-label="GitHub"
+          icon="i-simple-icons-linkedin"
+          aria-label="LinkedIn"
           color="neutral"
           variant="ghost"
         />
 
         <UButton
-          to="https://ui.nuxt.com"
-          target="_blank"
-          label="Indgå samarbejde"
+          :to="contactLink"
+          label="Get in touch"
           color="primary"
           variant="solid"
           class="ml-2"
@@ -75,16 +88,16 @@ useSeoMeta({
     <UFooter>
       <template #left>
         <p class="text-sm text-muted">
-          Built with Nuxt UI • © {{ new Date().getFullYear() }}
+          © {{ new Date().getFullYear() }} Matthias Kieler • Built with Nuxt SSG
         </p>
       </template>
 
       <template #right>
         <UButton
-          to="https://github.com/nuxt-ui-templates/starter"
+          :to="linkedinLink"
           target="_blank"
-          icon="i-simple-icons-github"
-          aria-label="GitHub"
+          icon="i-simple-icons-linkedin"
+          aria-label="LinkedIn"
           color="neutral"
           variant="ghost"
         />
