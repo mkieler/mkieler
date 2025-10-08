@@ -14,34 +14,65 @@ const hasTestimonials = computed(() => props.testimonials.length > 0)
   <section id="testimonials" class="py-20">
     <UContainer class="space-y-12">
       <UiSectionHeading
-        eyebrow="Testimonials"
-        title="People I collaborate with"
-        description="Partners notice the calm delivery, clear communication, and the performance mindset baked into every engagement."
+        eyebrow="Udtalelser"
+        title="Ikke kun tag mit ord for det"
+        description="Samarbejdspartnere og kolleger deler deres oplevelser om samarbejdet."
       />
 
-      <div v-if="hasTestimonials" class="grid gap-6 md:grid-cols-2">
-        <UCard
-          v-for="testimonial in props.testimonials"
-          :key="testimonial.id"
-          :ui="{ body: 'space-y-4 p-6' }"
+      <div v-if="hasTestimonials">
+        <UMarquee
+          pause-on-hover
         >
-          <blockquote class="text-lg italic text-gray-700 dark:text-gray-300">
-            “{{ testimonial.quote }}”
-          </blockquote>
+          <UCard
+            v-for="testimonial in props.testimonials"
+            :key="testimonial.id"
+            :ui="{ body: 'space-y-4 p-6 w-100' }"
+            variant="subtle"
+          >
+            <blockquote class="text-lg italic text-gray-700 dark:text-gray-300 line-clamp-3">
+              “{{ testimonial.quote }}”
+            </blockquote>
 
-          <div>
-            <p class="font-semibold text-gray-900 dark:text-gray-100">
-              {{ testimonial.author.name }}
-            </p>
-            <p class="text-sm text-gray-500 dark:text-gray-400">
-              {{ testimonial.author.role }}<span v-if="testimonial.author.company"> · {{ testimonial.author.company }}</span>
-            </p>
-          </div>
-        </UCard>
+            <div>
+              <p class="font-semibold text-gray-900 dark:text-gray-100">
+                {{ testimonial.author.name }}
+              </p>
+              <p class="text-sm text-gray-500 dark:text-gray-400">
+                {{ testimonial.author.role }}<span v-if="testimonial.author.company"> · {{ testimonial.author.company }}</span>
+              </p>
+            </div>
+          </UCard>
+        </UMarquee>
+
+        <UMarquee
+          reverse
+          class="mt-10"
+          pause-on-hover
+        >
+          <UCard
+            v-for="testimonial in props.testimonials"
+            :key="testimonial.id"
+            :ui="{ body: 'space-y-4 p-6 w-100' }"
+            variant="subtle"
+             >
+            <blockquote class="text-lg italic text-gray-700 dark:text-gray-300 line-clamp-3">
+              “{{ testimonial.quote }}”
+            </blockquote>
+
+            <div>
+              <p class="font-semibold text-gray-900 dark:text-gray-100">
+                {{ testimonial.author.name }}
+              </p>
+              <p class="text-sm text-gray-500 dark:text-gray-400">
+                {{ testimonial.author.role }}<span v-if="testimonial.author.company"> · {{ testimonial.author.company }}</span>
+              </p>
+            </div>
+          </UCard>
+        </UMarquee>
       </div>
 
       <div v-else class="rounded-2xl border border-gray-200 bg-white/60 p-6 text-center text-gray-600 backdrop-blur dark:border-gray-800 dark:bg-gray-900/60 dark:text-gray-300">
-        <p>No public testimonials yet—happy to supply references on request.</p>
+        <p>Ingen offentlige udtalelser endnu—jeg deler gerne referencer på forespørgsel.</p>
       </div>
     </UContainer>
   </section>

@@ -8,48 +8,61 @@ export default defineEventHandler((): CmsExperienceResponse => {
       id: 1,
       attributes: {
         slug: 'experience-overview',
-        headline: 'Senior full-stack experience, in the trenches with product teams',
-        summary: '11+ years delivering SaaS platforms, complex integrations, and data-heavy dashboards for startups and enterprises.',
-        narrative: 'I partner with founders, agencies, and internal teams to architect robust backends, craft modern frontends, and automate delivery pipelines. From greenfield ideas to legacy rescue work, I focus on shipping value without compromising quality.',
-        primaryMetric: '11+ years building production software',
+        headline: 'Dybdegående fullstack udviklings-erfaring, med fokus på forretningslogik og skalerbare løsninger',
+        summary: '10+ års udvikler erfaring, både frontend og backend, med komplekse integrationer og data-tunge dashboards for både startups og enterprise-organisationer.',
+        narrative: 'Jeg har arbejdet med mange forskellige virksomheder, fra små startups til store enterprise-organisationer. Min styrke ligger i at forstå forretningslogikken og omsætte den til skalerbare, vedligeholdelsesvenlige løsninger, der leverer værdi hurtigt.',
+        primaryMetric: '10+ år med produktionsklar software',
         focusAreas: [
-          'SaaS platforms and subscription products',
-          'API design and third-party integrations',
-          'Internal tooling and data visualisation',
-          'Edge-ready static delivery with Nuxt SSG'
+          'Anvendelse af "best practice code patterns" for vedligeholdelsesvenlig kode',
+          'Arkitekturer der passer virksomhedens behov',
+          'Modulær tilgang for gøre kodebasen let og skalerbar',
+          'Automatiserede tests og CI/CD for pålidelig levering',
+          'Performance-optimering og Core Web Vitals',
+          'Sikkerhed og databeskyttelse som standard',
+          'Solide backends med førende frameworks som Laravel og .NET',
+          'Brugervenlige UI/UX-designs med reaktive frameworks',
+          'Integration med tredjeparts services og APIer'
         ],
         skills: [
           'Laravel',
-          'Livewire',
-          'Sanctum',
-          'Nuxt 3',
+          'PHP',
+          '.NET',
+          'C#',
+          'Nuxt.js',
+          'Vue.js',
+          'React.js',
+          'Next.js',
+          'Flutter',
+          'Dart',
+          'JavaScript',
           'TypeScript',
           'Tailwind CSS',
-          'TanStack Table',
           'Docker',
+          'CI/CD',
           'Ploi',
           'Azure AD / SSO',
           'Symfony',
-          'Doctrine ORM'
+          'Doctrine ORM',
+          'Og meget mere...'
         ],
         highlights: [
-          'Scaled a Laravel + Nuxt SaaS to thousands of daily active users with sub-second load times.',
-          'Delivered a secure partner portal integrating Azure AD, Salesforce, and internal APIs.',
-          'Migrated legacy PHP monolith to modular Laravel services with automated deployments.'
+          'Skalede en Laravel + Nuxt SaaS til tusindvis af daglige brugere med svartider under ét sekund.',
+          'Leverede en sikker partnerportal med integration til Azure AD, Salesforce og interne APIer.',
+          'Migrerede en legacy PHP-monolit til modulære Laravel-tjenester med automatiserede deployments.'
         ],
         performancePitch: {
-          title: 'Why Nuxt SSG keeps your business fast and discoverable',
+          title: 'Hvorfor Nuxt SSG holder din forretning hurtig og synlig',
           paragraphs: [
-            'Every page on this site is pre-rendered with Nuxt\'s static generation. That means content is built ahead of time and served from the edge, so visitors see the page almost instantly—no waiting on backend responses.',
-            'Static-first delivery also keeps the infrastructure simple. There is less to maintain, and we still hydrate the frontend when interactivity is needed. The result is confident Core Web Vitals scores and a resilient experience under traffic spikes.'
+            'Hver side på dette site er forudrenderet med Nuxt statisk generering. Det betyder, at indholdet bygges på forhånd og leveres fra edge, så besøgende ser siden næsten øjeblikkeligt—uden at vente på svar fra backend.',
+            'Statisk-først levering holder også infrastrukturen enkel. Der er mindre at vedligeholde, og vi hydrerer stadig frontenden, når der er brug for interaktivitet. Resultatet er sikre Core Web Vitals-scorer og en robust oplevelse under trafikspidser.'
           ],
           seoPoints: [
-            'Clean HTML with predictable metadata for every route',
-            'Automatic sitemap and robots directives ready for search engines',
-            'Structured data and Open Graph tags to boost sharing and discovery',
-            'Built-in performance budgets to keep images and scripts lean'
+            'Ren HTML med forudsigelig metadata for hver route',
+            'Automatisk sitemap og robots-direktiver klar til søgemaskiner',
+            'Strukturerede data og Open Graph-tags, der styrker deling og synlighed',
+            'Indbyggede performance-budgetter, så billeder og scripts holdes slanke'
           ],
-          verificationPrompt: 'Curious? Run the site through PageSpeed Insights—static pages from Nuxt typically score in the green without extra tuning.'
+          verificationPrompt: 'Nysgerrig? Kør sitet gennem PageSpeed Insights—statisk genererede sider fra Nuxt scorer typisk grønt uden ekstra tuning.'
         },
         createdAt: now,
         updatedAt: now,

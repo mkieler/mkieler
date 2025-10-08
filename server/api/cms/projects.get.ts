@@ -9,14 +9,14 @@ export default defineEventHandler((): CmsProjectsResponse => {
         id: 1,
         attributes: {
           slug: 'usage-analytics-saas',
-          title: 'Usage analytics SaaS',
-          description: 'Multi-tenant analytics dashboards with role-based access, audit trails, and live cohort filters.',
-          role: 'Lead developer & architect',
+          title: 'SaaS til brugsanalyse',
+          description: 'Multi-tenant analyse-dashboards med rollebaseret adgang, revisionsspor og live-filtre på kohorter.',
+          role: 'Lead-udvikler og arkitekt',
           stack: ['Laravel', 'Nuxt 3', 'PostgreSQL', 'Tailwind CSS'],
           links: [
             {
               id: 'case-study-usage-analytics',
-              label: 'Request case study',
+              label: 'Anmod om case',
               href: '#contact'
             }
           ],
@@ -29,9 +29,9 @@ export default defineEventHandler((): CmsProjectsResponse => {
         id: 2,
         attributes: {
           slug: 'field-service-platform',
-          title: 'Field service platform',
-          description: 'Offline-ready mobile experience backed by a Laravel API and Nuxt-admin portal for scheduling and reporting.',
-          role: 'Fractional CTO & delivery lead',
+          title: 'Field service-platform',
+          description: 'Offline-klar mobiloplevelse understøttet af et Laravel-API og en Nuxt-adminportal til planlægning og rapportering.',
+          role: 'Fractional CTO og leveranceansvarlig',
           stack: ['Laravel', 'Nuxt', 'Capacitor', 'Azure AD'],
           links: [],
           createdAt: now,
@@ -43,14 +43,14 @@ export default defineEventHandler((): CmsProjectsResponse => {
         id: 3,
         attributes: {
           slug: 'enterprise-ssg-marketing',
-          title: 'Enterprise marketing microsites',
-          description: 'Dozens of localized landing pages generated statically with Nuxt, integrated with HubSpot forms and analytics.',
-          role: 'Senior front-end engineer',
+          title: 'Enterprise marketing-microsites',
+          description: 'Dusinvis af lokaliserede landing pages genereret statisk med Nuxt og integreret med HubSpot-formularer og analytics.',
+          role: 'Senior frontend-ingeniør',
           stack: ['Nuxt SSG', 'HubSpot', 'Netlify'],
           links: [
             {
               id: 'pagespeed-proof',
-              label: 'See PageSpeed results',
+              label: 'Se PageSpeed-resultater',
               href: 'https://pagespeed.web.dev/'
             }
           ],

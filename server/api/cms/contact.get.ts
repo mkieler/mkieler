@@ -11,9 +11,9 @@ export default defineEventHandler((): CmsContactResponse => {
       id: 1,
       attributes: {
         slug: 'contact-preferences',
-        headline: 'Let’s build something reliable together',
-        description: 'Tell me about your product, the outcomes you need, and any deadlines. I reply within two business days with next steps and availability.',
-        availability: 'Currently scheduling freelance engagements and open to senior product engineering roles.',
+        headline: 'Lad os bygge noget driftssikkert sammen',
+        description: 'Fortæl mig om dit produkt, de resultater du skal opnå, og eventuelle deadlines. Jeg svarer inden for to hverdage med næste skridt og tilgængelighed.',
+        availability: 'Planlægger i øjeblikket freelanceopgaver og er åben for seniorroller inden for produktudvikling.',
         channels: [
           {
             id: 'email',
@@ -32,30 +32,30 @@ export default defineEventHandler((): CmsContactResponse => {
           fields: [
             {
               id: 'name',
-              label: 'Name',
+              label: 'Navn',
               name: 'name',
               type: 'text',
-              placeholder: 'Your name',
+              placeholder: 'Dit navn',
               required: true
             },
             {
               id: 'email',
-              label: 'Email',
+              label: 'E-mail',
               name: 'email',
               type: 'email',
-              placeholder: 'you@company.com',
+              placeholder: 'dig@virksomhed.com',
               required: true
             },
             {
               id: 'message',
-              label: 'Project details',
+              label: 'Projektdetaljer',
               name: 'message',
               type: 'textarea',
-              placeholder: 'Tell me about your goals, timelines, and stack considerations.',
+              placeholder: 'Fortæl om jeres mål, tidsplaner og teknologistak.',
               required: true
             }
           ],
-          submitLabel: 'Send message'
+          submitLabel: 'Send besked'
         },
         createdAt: now,
         updatedAt: now,

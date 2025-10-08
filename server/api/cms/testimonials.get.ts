@@ -9,12 +9,12 @@ export default defineEventHandler((): CmsTestimonialsResponse => {
         id: 1,
         attributes: {
           slug: 'cto-testimonial',
-          quote: 'Matthias delivered production-ready features every sprint and kept our performance budgets honest. The Nuxt SSG approach meant marketing could launch campaigns without waiting on engineering.',
+          quote: 'Mattias leverede produktionsklare features hver sprint og holdt vores performance-budgetter på plads. Nuxt SSG-tilgangen betød, at marketing kunne starte kampagner uden at vente på udviklingsteamet.',
           author: {
             name: 'Jonas Schmidt',
-            role: 'CTO, B2B SaaS scale-up',
+            role: 'CTO, B2B SaaS-scaleup',
             company: 'Northwind Analytics',
-            avatarAlt: 'Portrait of Jonas Schmidt'
+            avatarAlt: 'Portræt af Jonas Schmidt'
           },
           createdAt: now,
           updatedAt: now,
@@ -25,12 +25,60 @@ export default defineEventHandler((): CmsTestimonialsResponse => {
         id: 2,
         attributes: {
           slug: 'agency-partner-testimonial',
-          quote: 'From API design to launch readiness, Matthias joins our agency teams and raises the bar. Clients notice the attention to detail and the speed of the final experience.',
+          quote: 'Fra API-design til lancering er Mattias en del af vores bureauhold og løfter barren. Kunderne mærker både detaljegraden og hastigheden i den færdige oplevelse.',
           author: {
             name: 'Sofie Larsen',
             role: 'Managing Partner',
             company: 'Studio Lambda',
-            avatarAlt: 'Portrait of Sofie Larsen'
+            avatarAlt: 'Portræt af Sofie Larsen'
+          },
+          createdAt: now,
+          updatedAt: now,
+          publishedAt: now
+        }
+      },
+      {
+        id: 3,
+        attributes: {
+          slug: 'agency-partner-testimonial',
+          quote: 'Fra API-design til lancering er Mattias en del af vores bureauhold og løfter barren. Kunderne mærker både detaljegraden og hastigheden i den færdige oplevelse.',
+          author: {
+            name: 'Sofie Larsen',
+            role: 'Managing Partner',
+            company: 'Studio Lambda',
+            avatarAlt: 'Portræt af Sofie Larsen'
+          },
+          createdAt: now,
+          updatedAt: now,
+          publishedAt: now
+        }
+      },
+      {
+        id: 4,
+        attributes: {
+          slug: 'agency-partner-testimonial',
+          quote: 'Fra API-design til lancering er Mattias en del af vores bureauhold og løfter barren. Kunderne mærker både detaljegraden og hastigheden i den færdige oplevelse.',
+          author: {
+            name: 'Sofie Larsen',
+            role: 'Managing Partner',
+            company: 'Studio Lambda',
+            avatarAlt: 'Portræt af Sofie Larsen'
+          },
+          createdAt: now,
+          updatedAt: now,
+          publishedAt: now
+        }
+      },
+      {
+        id: 5,
+        attributes: {
+          slug: 'agency-partner-testimonial',
+          quote: 'Fra API-design til lancering er Mattias en del af vores bureauhold og løfter barren. Kunderne mærker både detaljegraden og hastigheden i den færdige oplevelse.',
+          author: {
+            name: 'Sofie Larsen',
+            role: 'Managing Partner',
+            company: 'Studio Lambda',
+            avatarAlt: 'Portræt af Sofie Larsen'
           },
           createdAt: now,
           updatedAt: now,

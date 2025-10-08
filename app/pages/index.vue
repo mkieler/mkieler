@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 const cms = useCMS()
 const runtimeConfig = useRuntimeConfig()
 
@@ -22,8 +23,8 @@ const siteUrl = runtimeConfig.public.siteUrl || 'https://mkieler.dev'
 const canonicalUrl = `${siteUrl.replace(/\/$/, '')}/`
 const ogImage = `${siteUrl.replace(/\/$/, '')}/og-image.jpg`
 
-const pageTitle = 'Matthias Kieler | Laravel + Nuxt specialist for performant web products'
-const pageDescription = 'Marketing sites, SaaS platforms, and internal tools that feel instant thanks to Nuxt static generation, strong Laravel backends, and pragmatic engineering.'
+const pageTitle = 'Mattias Kieler | Laravel + Nuxt-specialist til ydeevnestærke webprodukter'
+const pageDescription = 'Marketingsider, SaaS-platforme og interne værktøjer, der føles øjeblikkelige takket være Nuxt statisk generering, solide Laravel-backends og pragmatisk ingeniørarbejde.'
 
 useSeoMeta({
   title: pageTitle,
@@ -43,9 +44,9 @@ const sameAsLinks = [runtimeConfig.public.linkedinUrl, runtimeConfig.public.gith
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Matthias Kieler',
+  name: 'Mattias Kieler',
   url: canonicalUrl,
-  jobTitle: hero.value.headline || 'Fractional CTO & Senior Full-Stack Developer',
+  jobTitle: hero.value.headline || 'Fractional CTO og senior fullstack-udvikler',
   description: pageDescription,
   email: `mailto:${runtimeConfig.public.contactEmail}`,
   sameAs: sameAsLinks,
@@ -55,17 +56,17 @@ const personSchema = {
 const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
-  name: 'Matthias Kieler Consulting',
+  name: 'Mattias Kieler Konsulentydelser',
   url: canonicalUrl,
-  areaServed: 'Remote',
-  serviceType: 'Freelance full-stack web development',
+  areaServed: 'Fjernarbejde',
+  serviceType: 'Freelance fullstack-webudvikling',
   provider: {
     '@type': 'Person',
-    name: 'Matthias Kieler'
+    name: 'Mattias Kieler'
   },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'Engagement options',
+    name: 'Samarbejdsmodeller',
     itemListElement: experience.value.focusAreas.map((area) => ({
       '@type': 'Offer',
       itemOffered: {
@@ -95,19 +96,20 @@ useHead({
   ]
 })
 
-const footerNote = 'This site is statically generated with Nuxt, so pages are pre-built and cached globally for low TTFB and strong Core Web Vitals.'
+const footerNote = 'Dette site er statisk genereret med Nuxt, så siderne er forudbygget og cachet globalt for lav TTFB og stærke Core Web Vitals.'
 const footerChannels = computed(() => contact.value?.channels ?? [])
 </script>
 
 <template>
   <main>
     <FrontpageHero v-if="hero" :hero="hero" />
-    <FrontpageStatement v-if="stacks?.length" :stacks="stacks" />
     <FrontpageExperience v-if="experience" :experience="experience" />
-    <FrontpageProjects v-if="projects?.length" :projects="projects" />
-    <FrontpageWhyMe v-if="experience?.performancePitch" :pitch="experience.performancePitch" />
+    <FrontpageAbout />s
+    <FrontpageStatement v-if="stacks?.length" :stacks="stacks" />
+    <!-- <FrontpageProjects v-if="projects?.length" :projects="projects" />
+    <FrontpageWhyMe v-if="experience?.performancePitch" :pitch="experience.performancePitch" /> -->
     <FrontpageTestimonials :testimonials="testimonials" />
-    <FrontpageContact v-if="contact" :contact="contact" />
-    <FrontpageFooter :channels="footerChannels" :note="footerNote" />
+    <FrontpageThisSite />
+    <FrontpageBottomCta/>
   </main>
 </template>

@@ -18,20 +18,20 @@ const submissionState = ref<'idle' | 'success'>('idle')
 
 const validate = () => {
   errors.name = props.contact.form.fields.find((field) => field.name === 'name' && field.required) && !formState.name
-    ? 'Please add your name.'
+    ? 'Tilføj venligst dit navn.'
     : ''
 
   errors.email = props.contact.form.fields.find((field) => field.name === 'email' && field.required) && !formState.email
-    ? 'An email address is required.'
+    ? 'En e-mailadresse er påkrævet.'
     : ''
 
   if (!errors.email && formState.email) {
     const emailPattern = /\S+@\S+\.\S+/
-    errors.email = emailPattern.test(formState.email) ? '' : 'Use a valid email address.'
+    errors.email = emailPattern.test(formState.email) ? '' : 'Brug en gyldig e-mailadresse.'
   }
 
   errors.message = props.contact.form.fields.find((field) => field.name === 'message' && field.required) && !formState.message
-    ? 'Please tell me a bit about the work.'
+    ? 'Fortæl mig gerne lidt om opgaven.'
     : ''
 
   return !errors.name && !errors.email && !errors.message
@@ -52,7 +52,7 @@ const onSubmit = () => {
   <section id="contact" class="py-20">
     <UContainer class="space-y-12">
       <UiSectionHeading
-        eyebrow="Contact"
+        eyebrow="Kontakt"
         :title="props.contact.headline"
         :description="props.contact.description"
       />
@@ -65,7 +65,7 @@ const onSubmit = () => {
 
           <div class="space-y-3">
             <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
-              Preferred channels
+              Foretrukne kanaler
             </h3>
             <ul class="space-y-2">
               <li
@@ -84,7 +84,7 @@ const onSubmit = () => {
                   variant="ghost"
                   color="neutral"
                 >
-                  Open
+                  Åbn
                 </UButton>
               </li>
             </ul>
@@ -133,7 +133,7 @@ const onSubmit = () => {
               role="status"
               aria-live="polite"
             >
-              Thanks! I'll reply within two business days.
+              Tak! Jeg svarer inden for to hverdage.
             </p>
           </div>
         </form>

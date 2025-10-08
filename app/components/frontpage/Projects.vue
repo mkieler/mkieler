@@ -10,9 +10,9 @@ const props = defineProps<{
   <section id="projects" class="py-20">
     <UContainer class="space-y-12">
       <UiSectionHeading
-        eyebrow="Selected projects"
-        title="Representative work"
-        description="A sample of the SaaS platforms, integrations, and static-first sites I build. Full portfolio available on request."
+        eyebrow="Udvalgte projekter"
+        title="Repræsentativt arbejde"
+        description="Et udsnit af de SaaS-platforme, integrationer og statisk-først sites, jeg bygger. Fuld portefølje kan deles efter aftale."
       />
 
       <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">

@@ -9,14 +9,14 @@ export default defineEventHandler((): CmsStacksResponse => {
         id: 1,
         attributes: {
           slug: 'laravel-nuxt',
-          name: 'Laravel backend + Nuxt frontend',
-          headline: 'My go-to stack for product teams that need speed and long-term maintainability.',
-          description: 'Laravel handles the domain logic, Nuxt delivers fast, SEO-friendly user experiences, and the two deploy cleanly together.',
+          name: 'Web Applikation',
+          headline: 'Web applikationer er ideelle til SaaS-platforme og komplekse dashboards med tunge integrationer.',
+          description: '',
           bullets: [
-            'Best fit for SaaS platforms, secure portals, dashboards, and integrations-heavy products.',
-            'Rapid prototyping with Laravel Breeze or custom APIs, then production-ready Nuxt SSG and SSR pages.'
+            'Perfekt til SaaS-platforme, sikre portaler, dashboards og produkter med tunge integrationer.',
+            'Hurtig prototyping med Laravel Breeze eller skræddersyede APIer og derefter produktionsklare Nuxt SSG- og SSR-sider.'
           ],
-          tags: ['Laravel', 'Nuxt 3', 'TypeScript', 'Tailwind CSS'],
+          tags: ['Laravel', '.NET', 'Nuxt 3', 'TypeScript', 'Tailwind CSS'],
           createdAt: now,
           updatedAt: now,
           publishedAt: now
@@ -26,14 +26,14 @@ export default defineEventHandler((): CmsStacksResponse => {
         id: 2,
         attributes: {
           slug: 'dotnet-modern-frontend',
-          name: '.NET backend + modern JavaScript frontend',
-          headline: 'Ideal when your organisation runs on Microsoft ecosystems and needs a modern UX.',
-          description: 'I integrate Nuxt, React, or Vue frontends with existing .NET APIs, Azure AD/SSO, and enterprise data sources.',
+          name: 'Cross Platform Apps',
+          headline: 'Applikationer der kan køre på tværs af platforme som Windows, Linux, macOS, iOS og Android.',
+          description: 'Bygget med .NET (MAUI eller Blazor), Flutter eller React Native.',
           bullets: [
-            'Works well for internal tooling, B2B portals, and hybrid cloud deployments.',
-            'Keeps the .NET investment while letting the frontend evolve quickly.'
+            'Ideel til applikationer der skal køre på tværs af platforme.',
+            'Anbefalet til internt værktøj i større virksomheder.'
           ],
-          tags: ['.NET', 'Azure', 'Nuxt', 'Modern JS'],
+          tags: ['.NET', 'MAUI', 'Blazor', 'Azure', 'Flutter', 'Dart', 'React Native'],
           createdAt: now,
           updatedAt: now,
           publishedAt: now
@@ -42,19 +42,36 @@ export default defineEventHandler((): CmsStacksResponse => {
       {
         id: 3,
         attributes: {
-          slug: 'fullstack-typescript',
-          name: 'Modern JavaScript & TypeScript stacks',
-          headline: 'When teams want a lean setup with shared language across frontend and backend.',
-          description: 'Nuxt can power the UI while Node, Supabase, or serverless APIs handle data. Static-first delivery keeps costs low.',
+          slug: 'flutter-react-native',
+          name: 'Mobil Applikationer',
+          headline: 'Mobil applikationer udviklet med Flutter eller React Native for enestående ydeevne og brugeroplevelse.',
+          description: 'Flutter, udviklet af Google, og React Native, udviklet af Meta, er ideelle til at bygge moderne mobilapps.',
           bullets: [
-            'Great for marketing sites, documentation hubs, and MVPs that need to iterate quickly.',
-            'Simple hosting on edge platforms with CI that compiles and deploys in minutes.'
+            'Perfekt til applikationer, der kræver høj ydeevne og native-lignende brugeroplevelse.',
+            'Bygget én gang og deployer til både iOS og Android med minimal indsats.'
           ],
-          tags: ['Nuxt', 'Supabase', 'Node.js', 'Serverless'],
+          tags: ['Flutter', 'React Native', 'Android', 'iOS'],
           createdAt: now,
           updatedAt: now,
           publishedAt: now
-        }
+        },
+      },
+      {
+          id: 4,
+            attributes: {
+            slug: 'websites-ssg',
+            name: 'Websites',
+            headline: 'Websites udviklet med SSG-teknologier for hurtig indlæsning og bedre SEO.',
+            description: 'Bygget med Next.js eller Nuxt.js for at udnytte statisk site-generering.',
+            bullets: [
+              'Perfekt til marketinglandingssider, blogs og dokumentation.',
+              'Bygget én gang og deployer til både iOS og Android med minimal indsats.'
+            ],
+            tags: ['Next.js', 'Nuxt.js', 'Gatsby', 'SSG'],
+            createdAt: now,
+            updatedAt: now,
+            publishedAt: now
+          }
       }
     ]
   }

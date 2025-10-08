@@ -9,21 +9,21 @@ useHead({
     { rel: 'icon', href: '/favicon.ico' }
   ],
   htmlAttrs: {
-    lang: 'en'
+    lang: 'da'
   }
 })
 
-const siteTitle = 'Matthias Kieler · Laravel + Nuxt Engineer'
-const siteDescription = 'Fractional CTO and senior full-stack developer focused on Laravel backends and Nuxt frontends that stay fast, accessible, and maintainable.'
+const siteTitle = 'Mattias Kieler · Laravel + Nuxt-ingeniør'
+const siteDescription = 'Fractional CTO og senior fullstack-udvikler med fokus på Laravel-backends og Nuxt-frontends, der forbliver hurtige, tilgængelige og lette at vedligeholde.'
 
 const siteUrl = runtimeConfig.public.siteUrl || 'https://mkieler.dev'
 const ogImage = `${siteUrl.replace(/\/$/, '')}/og-image.jpg`
 
 const navigationItems = [
-  { label: 'Stacks', href: '/#stacks' },
-  { label: 'Experience', href: '/#experience' },
-  { label: 'Projects', href: '/#projects' },
-  { label: 'Contact', href: '/#contact' }
+  { label: 'Teknologistakke', href: '/#stacks' },
+  { label: 'Erfaring', href: '/#experience' },
+  { label: 'Projekter', href: '/#projects' },
+  { label: 'Kontakt', href: '/#contact' }
 ]
 
 const linkedinLink = runtimeConfig.public.linkedinUrl || 'https://www.linkedin.com/in/mattiaskieler'
@@ -51,7 +51,6 @@ useSeoMeta({
           <AppLogo class="w-auto shrink-0" />
         </NuxtLink>
       </template>
-
       <UNavigationMenu
         :items="navigationItems"
         class="hidden md:inline-flex"
@@ -59,6 +58,15 @@ useSeoMeta({
 
       <template #right>
         <UColorModeButton />
+
+        <UButton
+          to="githubLink"
+          target="_blank"
+          icon="i-simple-icons-github"
+          aria-label="GitHub"
+          color="neutral"
+          variant="ghost"
+        />
 
         <UButton
           :to="linkedinLink"
@@ -71,7 +79,7 @@ useSeoMeta({
 
         <UButton
           :to="contactLink"
-          label="Get in touch"
+          label="Kontakt mig"
           color="primary"
           variant="solid"
           class="ml-2"
@@ -88,7 +96,7 @@ useSeoMeta({
     <UFooter>
       <template #left>
         <p class="text-sm text-muted">
-          © {{ new Date().getFullYear() }} Matthias Kieler • Built with Nuxt SSG
+          © {{ new Date().getFullYear() }} Mattias Kieler • Bygget med Nuxt SSG
         </p>
       </template>
 

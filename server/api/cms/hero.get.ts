@@ -10,24 +10,24 @@ export default defineEventHandler((): CmsHeroResponse => {
       id: 1,
       attributes: {
         slug: 'homepage-hero',
-        eyebrow: 'Fractional CTO & Senior Full-Stack Developer',
-        headline: 'I turn product ideas into fast, resilient web experiences',
-        lead: 'Laravel + Nuxt specialist helping teams launch performant SaaS and internal tools faster.',
-        supportingText: 'Whether you need a freelance partner or a senior engineer who can own a project end-to-end, I deliver production-ready software that is easy to maintain and performs well under load.',
+        eyebrow: 'Fullstack-udvikling | Web & Software | Freelance & fuldtid',
+        headline: 'Fra produktidé til robust og skalerbar web eller software-løsning',
+        lead: 'Senior udvikler med forretningslogikken tæt ind til kroppen. Speciale i Laravel + Nuxt men en bred vifte af andre teknologi stacks som .NET C# og React eller Vue.',
+        supportingText: 'Uanset om du har brug for en freelancepartner eller en senior udvikler, der kan eje et projekt fra ende til ende, leverer jeg produktionsklar software og webapplikationer, som er skalerbare og performante.',
         primaryCta: {
           id: 'cta-contact',
-          label: 'Get in touch',
+          label: 'Kontakt mig',
           href: '#contact'
         },
         secondaryCta: {
           id: 'cta-resume',
-          label: 'View resume / CV',
+          label: 'Se CV',
           href: resumeUrl,
           target: '_blank'
         },
         badges: [
           { id: 'badge-laravel', label: 'Laravel + Nuxt' },
-          { id: 'badge-ssg', label: 'Static-first delivery' }
+          { id: 'badge-ssg', label: 'Statisk-først levering' }
         ],
         createdAt: now,
         updatedAt: now,

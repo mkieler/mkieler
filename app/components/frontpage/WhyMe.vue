@@ -10,7 +10,7 @@ const props = defineProps<{
   <section id="why-nuxt" class="py-20">
     <UContainer class="space-y-12">
       <UiSectionHeading
-        eyebrow="Performance & SEO"
+        eyebrow="Ydelse og SEO"
         :title="props.pitch.title"
         align="center"
       />
@@ -22,7 +22,7 @@ const props = defineProps<{
 
         <div class="rounded-2xl border border-gray-200 bg-white/60 p-6 shadow-sm backdrop-blur dark:border-gray-800 dark:bg-gray-900/60">
           <h3 class="text-base font-semibold text-gray-900 dark:text-gray-100">
-            Why search engines appreciate it
+            Hvorfor søgemaskinerne værdsætter det
           </h3>
           <ul class="mt-4 space-y-2">
             <li v-for="point in props.pitch.seoPoints" :key="point" class="flex items-start gap-2">
