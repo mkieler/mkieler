@@ -1,0 +1,19 @@
+<template>
+    <UButton
+        to="https://www.linkedin.com/in/molin-kieler/"
+        target="_blank"
+        icon="i-simple-icons-linkedin"
+        aria-label="LinkedIn"
+        color="neutral"
+        variant="ghost"
+    />
+
+    <UButton
+        to="https://github.com/mkieler"
+        target="_blank"
+        icon="i-simple-icons-github"
+        aria-label="GitHub"
+        color="neutral"
+        variant="ghost"
+    />
+</template>

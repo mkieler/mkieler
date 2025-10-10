@@ -13,18 +13,19 @@
             title: 'text-left lg:text-4xl', 
         }"
         orientation="horizontal"
-        :links="[
-            {
-                label: 'Kontakt mig for at høre mere ',
-                to: 'https://nuxt.com/docs/getting-started/ssg',
-                color: 'primary',
-                variant: 'solid',
-                class: 'p-4',
-                size: 'xl'
-            }
-        ]"
         class="py-20"
     >
+        <template #links>
+            <UButton
+                variant="solid"
+                color="primary"
+                size="xl"
+                class="p-4"
+                @click="$emit('open-contact-modal')"
+            >
+                Kontakt mig for at høre mere
+            </UButton>
+        </template>
         <img src="~/assets/img/pagespeed-scores.png" alt="PageSpeed Scores" class="h-full object-cover rounded-xl shadow-xl border border-gray-200 dark:border-gray-700" />
     </UPageSection>
 </template>

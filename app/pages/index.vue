@@ -102,14 +102,14 @@ const footerChannels = computed(() => contact.value?.channels ?? [])
 
 <template>
   <main>
-    <FrontpageHero v-if="hero" :hero="hero" />
+    <FrontpageHero v-if="hero" :hero="hero" @open-contact-modal="$emit('open-contact-modal')" />
     <FrontpageExperience v-if="experience" :experience="experience" />
-    <FrontpageAbout />s
-    <FrontpageStatement v-if="stacks?.length" :stacks="stacks" />
+    <FrontpageAbout />
+    <FrontpageStatement v-if="stacks?.length" :stacks="stacks" @open-contact-modal="$emit('open-contact-modal')"/>
     <!-- <FrontpageProjects v-if="projects?.length" :projects="projects" />
     <FrontpageWhyMe v-if="experience?.performancePitch" :pitch="experience.performancePitch" /> -->
     <FrontpageTestimonials :testimonials="testimonials" />
-    <FrontpageThisSite />
-    <FrontpageBottomCta/>
+    <FrontpageThisSite @open-contact-modal="$emit('open-contact-modal')"/>
+    <FrontpageBottomCta @open-contact-modal="$emit('open-contact-modal')"/>
   </main>
 </template>

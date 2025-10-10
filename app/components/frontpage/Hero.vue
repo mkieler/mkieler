@@ -5,20 +5,7 @@ const props = defineProps<{
   hero: CmsHeroContent
 }>()
 
-const links = ref([
-  {
-    label: 'Get started',
-    to: '#',
-    icon: 'i-lucide-square-play'
-  },
-  {
-    label: 'Learn more',
-    to: '#',
-    color: 'primary' as 'primary',
-    variant: 'soft' as 'soft',
-    trailingIcon: 'i-lucide-arrow-right'
-  }
-])
+
 
 const bulletpoints = [
   {
@@ -46,10 +33,12 @@ const badge = {
 </script>
 
 <template>
-  <UPageHero :title="props.hero.headline" :headline="props.hero.eyebrow" orientation="horizontal" :links="links" :ui="{
+  <UPageHero :title="props.hero.headline" :headline="props.hero.eyebrow" orientation="horizontal" :ui="{
     root: 'py-20 bg-gradient-to-t from-indigo-900/10 to-transparent border-b border-primary-200 dark:border-gray-800',
     title: 'sm:text-5xl mb-7',
-  }">
+  }"
+  id="hero"
+  >
     <template #description>
       <h1 class="text-xl text-gray-700 dark:text-gray-300 mb-4 font-semibold">
         Senior udvikler med forretningslogikken tæt ind til kroppen. 
@@ -60,6 +49,28 @@ const badge = {
       <p class="text-lg text-gray-600 dark:text-gray-400">
         {{ props.hero.supportingText }}
       </p>
+
+      <div class="mt-6 flex flex-col gap-4 sm:flex-row sm:gap-6 md:gap-8 w-full sm:w-auto">
+        <UButton
+          variant="solid"
+          color="primary"
+          size="xl"
+          icon="i-lucide-message-circle"
+          class="flex w-full justify-center"
+          @click="$emit('open-contact-modal')"
+          >Kontakt mig</UButton
+        >
+
+        <UButton
+          variant="outline"
+          color="primary"
+          size="xl"
+          class="flex w-full justify-center"
+          trailing-icon="i-lucide-arrow-right"
+          to="/#experience"
+          >Se mere</UButton
+        >
+      </div>
     </template>
     <LazyStarsBg />
     <UPageCard 

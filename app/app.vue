@@ -1,5 +1,17 @@
 <script setup lang="ts">
 const runtimeConfig = useRuntimeConfig()
+// const nuxtApp = useNuxtApp()
+// const { updateHeadings, visibleHeadings } = useScrollspy()
+
+
+// nuxtApp.hooks.hookOnce('page:finish', () => {
+//   updateHeadings([
+//     document.querySelector('#hero'),
+//     document.querySelector('#experience'),
+//     document.querySelector('#about'),
+//     document.querySelector('#testimonials')
+//   ].filter(Boolean) as Element[])
+// })
 
 useHead({
   meta: [
@@ -19,12 +31,29 @@ const siteDescription = 'Fractional CTO og senior fullstack-udvikler med fokus p
 const siteUrl = runtimeConfig.public.siteUrl || 'https://mkieler.dev'
 const ogImage = `${siteUrl.replace(/\/$/, '')}/og-image.jpg`
 
-const navigationItems = [
-  { label: 'Teknologistakke', href: '/#stacks' },
-  { label: 'Erfaring', href: '/#experience' },
-  { label: 'Projekter', href: '/#projects' },
-  { label: 'Kontakt', href: '/#contact' }
-]
+const navigationItems = computed(() => [
+  { 
+    label: 'Kompetencer', 
+    to: '/#experience', 
+    active: false,
+    // active: visibleHeadings.value.includes('experience') && !visibleHeadings.value.includes('hero')
+  },
+  { 
+    label: 'Om mig', 
+    to: '/#about', 
+    active: false,
+  },
+  {
+    label: 'Services',
+    to: '/#services',
+    active: false,
+  },
+  { 
+    label: 'Udtaelser', 
+    to: '/#testimonials', 
+    active: false,
+  }
+])
 
 const linkedinLink = runtimeConfig.public.linkedinUrl || 'https://www.linkedin.com/in/mattiaskieler'
 const contactLink = '/#contact'
@@ -41,10 +70,14 @@ useSeoMeta({
   twitterImage: ogImage,
   twitterCard: 'summary_large_image'
 })
+
+const showContactModal = ref(false)
 </script>
 
 <template>
   <UApp>
+    <ContactModal v-model:open="showContactModal" />
+
     <UHeader>
       <template #left>
         <NuxtLink to="/">
@@ -58,27 +91,15 @@ useSeoMeta({
 
       <template #right>
         <UColorModeButton />
+        
+        <USeparator orientation="vertical" class="mx-2 h-6" />
+
+        <SocialIcons />
+
+        <USeparator orientation="vertical" class="mx-2 h-6" />
 
         <UButton
-          to="githubLink"
-          target="_blank"
-          icon="i-simple-icons-github"
-          aria-label="GitHub"
-          color="neutral"
-          variant="ghost"
-        />
-
-        <UButton
-          :to="linkedinLink"
-          target="_blank"
-          icon="i-simple-icons-linkedin"
-          aria-label="LinkedIn"
-          color="neutral"
-          variant="ghost"
-        />
-
-        <UButton
-          :to="contactLink"
+          @click="showContactModal = true"
           label="Kontakt mig"
           color="primary"
           variant="solid"
@@ -88,27 +109,20 @@ useSeoMeta({
     </UHeader>
 
     <UMain>
-      <NuxtPage />
+      <NuxtPage @open-contact-modal="showContactModal = true" />
     </UMain>
 
-    <USeparator icon="i-simple-icons-nuxtdotjs" />
+    <USeparator :avatar="{ alt: 'Mattias Kieler', size: 'sm', ui: { root: 'w-10 h-10 bg-primary', fallback: '!text-inverted' } }" />
 
     <UFooter>
       <template #left>
         <p class="text-sm text-muted">
-          © {{ new Date().getFullYear() }} Mattias Kieler • Bygget med Nuxt SSG
+          © {{ new Date().getFullYear() }} Mattias Kieler • Alle rettigheder forbeholdes.
         </p>
       </template>
 
       <template #right>
-        <UButton
-          :to="linkedinLink"
-          target="_blank"
-          icon="i-simple-icons-linkedin"
-          aria-label="LinkedIn"
-          color="neutral"
-          variant="ghost"
-        />
+        <SocialIcons />
       </template>
     </UFooter>
   </UApp>

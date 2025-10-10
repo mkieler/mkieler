@@ -31,7 +31,12 @@ const features = ref([
     headline="YDELSER JEG TILBYDER & TEKNOLOGIER JEG ANBEFALER"
     title="Applikationer bygget med de rette teknologier"
     description="Jeg matcher teknologivalget ud fra budget, teamkapacitet og de resultater, I skal levere. Aldrig bare trends."
-    :ui="{headline: 'justify-start', description: 'text-left', title: 'text-left lg:text-4xl'}"
+    :ui="{
+      headline: 'justify-start', 
+      description: 'text-left', 
+      title: 'text-left lg:text-4xl',
+      root: 'pt-20',
+    }"
     
   >
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-2 mb-12">
@@ -39,7 +44,8 @@ const features = ref([
         v-for="stack in props.stacks"
         :key="stack.headline"
         :ui="{ 
-          body: 'grid flex-col gap-4 justify-between h-full border border-primary dark:border-primary-dark rounded-2xl p-6 hover:shadow-lg transition-shadow duration-300',
+          root: 'border border-primary-500/40 dark:border-primary-dark',
+          body: 'grid flex-col gap-4 justify-between h-full',
         }"
         variant="subtle"
       >
@@ -70,6 +76,7 @@ const features = ref([
           color="primary"
           size="xl"
           class="mt-10 flex w-full justify-center"
+          @click="$emit('open-contact-modal')"
         >
           Kontakt mig for at høre mere
         </UButton>

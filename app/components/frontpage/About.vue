@@ -10,6 +10,7 @@
         title="Jeg hedder Mattias, jeg er en familiefar med passion for udvikling."
         orientation="horizontal"
         reverse
+        id="about"
     >
         <template #description>
             <div class="flex flex-col gap-3">
