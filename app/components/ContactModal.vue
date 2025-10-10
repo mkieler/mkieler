@@ -22,7 +22,11 @@
         try {
             const res = await $fetch<Response>('https://email.mkieler.com', {
                 method: 'POST',
-                body: formData.value
+                body: formData.value,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': 'ae5f22dc-dede-428c-a3e5-2f8b0e30eb98'
+                }
             })
 
             if(res.ok){
