@@ -2,7 +2,8 @@
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
-    '@nuxt/ui'
+    '@nuxt/ui',
+    '@nuxtjs/critters',
     // '@nuxtjs/sitemap' // Enable when ready to publish sitemap.xml
   ],
 
@@ -10,8 +11,32 @@ export default defineNuxtConfig({
     enabled: true
   },
 
+  vite: {
+    build: {
+      cssCodeSplit: true
+    }
+  },
+
   srcDir: 'app',
   css: ['assets/css/main.css'],
+
+  fonts: {
+    defaults: {
+      weights: [400, 700],
+      styles: ['normal', 'italic'],
+      subsets: ['latin']
+    },
+    families: [
+      {
+        name: 'Public Sans',
+        provider: 'google',
+        global: true,
+        weights: [400, 700],
+        styles: ['normal', 'italic'],
+        subsets: ['latin']
+      }
+    ]
+  },
 
   runtimeConfig: {
     public: {
@@ -29,10 +54,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'vercel-edge',
-    prerender: {
-      routes: ['/']
-    }
+    compressPublicAssets: true
   },
 
   compatibilityDate: '2025-01-15',

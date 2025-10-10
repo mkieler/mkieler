@@ -26,6 +26,6 @@
                 Kontakt mig for at høre mere
             </UButton>
         </template>
-        <img src="~/assets/img/pagespeed-scores.png" alt="PageSpeed Scores" class="h-full object-cover rounded-xl shadow-xl border border-gray-200 dark:border-gray-700" />
+        <img src="~/assets/img/pagespeed-scores.png" alt="PageSpeed Scores" class="h-full object-cover rounded-xl shadow-xl border border-gray-200 dark:border-gray-700" loading="lazy" decoding="async"/>
     </UPageSection>
 </template>

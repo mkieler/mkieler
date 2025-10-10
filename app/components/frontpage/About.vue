@@ -25,6 +25,6 @@
                 </p>
             </div>
         </template>
-        <img src="~/assets/img/mig.png" alt="Mattias Kieler" class="rounded-xl h-full object-cover shadow-xl shadow-gray-900/50 dark:shadow-slate-900/70"/>
+        <img src="~/assets/img/mig.png" alt="Mattias Kieler" class="rounded-xl h-full object-cover shadow-xl shadow-gray-900/50 dark:shadow-slate-900/70" loading="lazy" decoding="async"/>
     </UPageSection>
 </template>
