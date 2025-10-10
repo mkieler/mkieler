@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     enabled: true
   },
 
+  srcDir: 'app/',
   css: ['~/assets/css/main.css'],
 
   runtimeConfig: {
