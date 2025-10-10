@@ -102,7 +102,6 @@ const footerChannels = computed(() => contact.value?.channels ?? [])
 
 <template>
   <main>
-    hello
     <FrontpageHero v-if="hero" :hero="hero" @open-contact-modal="$emit('open-contact-modal')" />
     <FrontpageExperience v-if="experience" :experience="experience" />
     <FrontpageAbout />
