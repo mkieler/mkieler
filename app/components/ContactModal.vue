@@ -29,29 +29,21 @@
                 }
             })
 
-            if(res.ok){
-                toast.add({
-                    title: 'Besked sendt',
-                    description: 'Tak for din besked! Jeg vender tilbage til dig hurtigst muligt.',
-                    duration: 5000,
-                    color: 'success'
-                });
-                formData.value = {
-                    firstName: '',
-                    lastName: '',
-                    email: '',
-                    phone: '',
-                    inquiryType: 'general',
-                    message: '',
-                }
-            } else {
-                toast.add({
-                    title: 'Fejl ved afsendelse',
-                    description: 'Der opstod en fejl ved afsendelse af din besked. Prøv venligst igen senere.',
-                    duration: 5000,
-                    color: 'error'
-                });
+            toast.add({
+                title: 'Besked sendt',
+                description: 'Tak for din besked! Jeg vender tilbage til dig hurtigst muligt.',
+                duration: 5000,
+                color: 'success'
+            });
+            formData.value = {
+                firstName: '',
+                lastName: '',
+                email: '',
+                phone: '',
+                inquiryType: 'general',
+                message: '',
             }
+            
         } catch (error) {
             toast.add({
                 title: 'Fejl ved afsendelse',
