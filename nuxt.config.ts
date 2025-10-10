@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   },
 
   srcDir: 'app',
-  css: ['~/assets/css/main.css'],
+  css: ['assets/css/main.css'],
 
   runtimeConfig: {
     public: {
