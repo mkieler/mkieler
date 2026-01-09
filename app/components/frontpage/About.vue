@@ -5,6 +5,7 @@
             description: 'text-left', 
             title: 'text-left lg:text-4xl', 
             root: 'bg-gray-100 dark:bg-gray-800/50 border-t border-b border-primary-200 dark:border-primary-400/30',
+            container: 'lg:flex-col flex-col-reverse'
         }"
         headline="MEN.. HVEM ER JEG?"
         title="Jeg hedder Mattias, jeg er en familiefar med passion for udvikling."
@@ -25,6 +26,12 @@
                 </p>
             </div>
         </template>
-        <img src="~/assets/img/mig.png" alt="Mattias Kieler" class="rounded-xl h-full object-cover shadow-xl shadow-gray-900/50 dark:shadow-slate-900/70" loading="lazy" decoding="async"/>
+        <img 
+            src="~/assets/img/mig.png" 
+            alt="Mattias Kieler" 
+            class="rounded-xl object-cover shadow-xl shadow-gray-900/50 dark:shadow-slate-900/70 lg:max-h-170 max-h-100 w-full sm:max-w-100 lg:max-w-full" 
+            loading="lazy" 
+            decoding="async"
+        />
     </UPageSection>
 </template>

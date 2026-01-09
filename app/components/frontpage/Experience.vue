@@ -17,7 +17,8 @@ const secondHalfSkills = props.experience.skills.slice(halfOfSkills)
     :title="props.experience.headline"
     :description="props.experience.summary"
     :ui="{
-      title: 'lg:text-4xl',
+      title: 'md:text-2xl sm:text-lg lg:text-4xl text-lg',
+      description: 'text-sm lg:text-base',
       root: 'pt-15 pb-30',
     }"
   >
@@ -28,10 +29,10 @@ const secondHalfSkills = props.experience.skills.slice(halfOfSkills)
             <p class="text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
               Erfaringsniveau
             </p>
-            <p class="mt-2 text-2xl font-semibold text-gray-900 dark:text-gray-100">
+            <p class="mt-2 text-lg md:text-2xl font-semibold text-gray-900 dark:text-gray-100">
               {{ props.experience.primaryMetric }}
             </p>
-            <p class="mt-4 text-gray-600 dark:text-gray-300">
+            <p class="mt-4 text-sm md:text-base text-gray-600 dark:text-gray-300">
               {{ props.experience.narrative }}
             </p>
           </div>
@@ -40,16 +41,16 @@ const secondHalfSkills = props.experience.skills.slice(halfOfSkills)
             <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
               Fokusområder
             </h3>
-            <ul class="mt-4 space-y-2 text-gray-600 dark:text-gray-300">
+            <ul class="text-sm md:text-base mt-4 space-y-2 text-gray-600 dark:text-gray-300">
               <li v-for="area in props.experience.focusAreas" :key="area" class="flex items-start gap-2">
-                <UIcon name="i-lucide-target" class="mt-1 h-4 w-4 text-primary-500" />
+                <UIcon name="i-lucide-target" class="h-4 w-4 text-primary-500 mr-2" />
                 <span>{{ area }}</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div class="space-y-15 border-l border-gray-200 pl-0 lg:pl-12 dark:border-gray-800">
+        <div class="space-y-15 lg:border-l border-t pt-5 lg:border-t-0 border-gray-200 pl-0 lg:pl-12 dark:border-gray-800">
           <div>
             <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
               Kompetencer og værktøjer

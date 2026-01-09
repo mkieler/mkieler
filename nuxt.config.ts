@@ -54,7 +54,10 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    compressPublicAssets: true
+    compressPublicAssets: true,
+    devProxy: {
+      host: 'localhost'
+    }
   },
 
   compatibilityDate: '2025-01-15',

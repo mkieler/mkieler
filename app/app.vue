@@ -82,7 +82,13 @@ const showContactModal = ref(false)
   <UApp>
     <ContactModal v-model:open="showContactModal" />
 
-    <UHeader>
+    <UHeader
+      mode="slideover"
+
+      :ui="{
+        content: 'w-md max-w-[90%]'
+      }">
+
       <template #left>
         <NuxtLink to="/">
           <AppLogo class="w-auto shrink-0" />
@@ -96,18 +102,26 @@ const showContactModal = ref(false)
       <template #right>
         <UColorModeButton />
         
-        <USeparator orientation="vertical" class="mx-2 h-6" />
+        <USeparator orientation="vertical" class="sm:mx-2 h-6" />
 
         <SocialIcons />
 
-        <USeparator orientation="vertical" class="mx-2 h-6" />
+        <USeparator orientation="vertical" class="sm:mx-2 h-6" />
 
         <UButton
           @click="showContactModal = true"
           label="Kontakt mig"
           color="primary"
           variant="solid"
-          class="ml-2"
+          class="ml-2 hidden md:inline-flex"
+        />
+      </template>
+
+      <template #body>
+        <UNavigationMenu
+          :items="navigationItems"
+          vertical
+          orientation="vertical"
         />
       </template>
     </UHeader>
