@@ -25,6 +25,16 @@
             >
                 Kontakt mig for at høre mere
             </UButton>
+
+            <UButton
+                variant="outline"
+                color="primary"
+                size="xl"
+                class="p-4"
+                href="https://pagespeed.web.dev/analysis/https-mkieler-com/zeen17155o?form_factor=mobile"
+            >
+                Se PageSpeed rapport
+            </UButton>
         </template>
         <img src="~/assets/img/pagespeed-scores.png" alt="PageSpeed Scores" class="h-full object-cover rounded-xl shadow-xl border border-gray-200 dark:border-gray-700" loading="lazy" decoding="async"/>
     </UPageSection>
