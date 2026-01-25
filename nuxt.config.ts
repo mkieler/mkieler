@@ -4,7 +4,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/ui',
     '@nuxtjs/critters',
-    // '@nuxtjs/sitemap' // Enable when ready to publish sitemap.xml
+    '@nuxtjs/sitemap'
   ],
 
   devtools: {
@@ -47,7 +47,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       cmsBaseUrl: '',
-      siteUrl: 'https://mkieler.dev',
+      siteUrl: 'https://mkieler.com',
       linkedinUrl: 'https://www.linkedin.com/in/mattiaskieler',
       contactEmail: 'hello@mkieler.dev',
       resumeUrl: '/resume.pdf',
