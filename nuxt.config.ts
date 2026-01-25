@@ -13,8 +13,14 @@ export default defineNuxtConfig({
 
   vite: {
     build: {
-      cssCodeSplit: true
+      cssCodeSplit: true,
+      sourcemap: true
     }
+  },
+
+  sourcemap: {
+    server: false,
+    client: true
   },
 
   srcDir: 'app',
