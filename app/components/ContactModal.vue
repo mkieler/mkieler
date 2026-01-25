@@ -18,11 +18,25 @@
         message: '',
     })
 
+    const turnstileToken = ref('')
+
     async function submitForm() {
+        if (!turnstileToken.value) {
+            toast.add({
+                title: 'Verifikation påkrævet',
+                description: 'Gennemfør venligst verifikationen før du sender formularen.',
+                duration: 5000,
+                color: 'error'
+            });
+            return;
+        }
         try {
             const res = await $fetch<Response>('https://email.mkieler.com', {
                 method: 'POST',
-                body: formData.value,
+                body: {
+                    ...formData.value,
+                    turnstileToken: turnstileToken.value
+                },
                 headers: {
                     'Content-Type': 'application/json',
                     'token': 'ae5f22dc-dede-428c-a3e5-2f8b0e30eb98'
@@ -43,6 +57,7 @@
                 inquiryType: 'general',
                 message: '',
             }
+            turnstileToken.value = ''
             
         } catch (error) {
             toast.add({
@@ -123,6 +138,8 @@
                     required>
                     <UTextarea placeholder="Skriv din besked her..." class="w-full" size="xl" v-model="formData.message"/>
                 </UFormField>
+
+                <NuxtTurnstile v-model="turnstileToken" />
 
                 <UButton
                     variant="solid"

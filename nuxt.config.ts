@@ -4,8 +4,14 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/ui',
     '@nuxtjs/critters',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/turnstile'
   ],
+
+  site: {
+    url: 'https://mkieler.com',
+    name: 'Mattias Kieler'
+  },
 
   devtools: {
     enabled: true
@@ -51,7 +57,10 @@ export default defineNuxtConfig({
       linkedinUrl: 'https://www.linkedin.com/in/mattiaskieler',
       contactEmail: 'hello@mkieler.dev',
       resumeUrl: '/resume.pdf',
-      githubUrl: 'https://github.com/mkieler'
+      githubUrl: 'https://github.com/mkieler',
+      turnstile: {
+        siteKey: '',
+      }
     }
   },
 
