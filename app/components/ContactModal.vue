@@ -32,7 +32,7 @@
             return;
         }
         try {
-            const res = await $fetch<Response>(`${config.public.siteUrl}/api/contact`, {
+            const res = await $fetch<Response>(`${config.public.apiUrl}/api/contact`, {
                 method: 'POST',
                 body: {
                     ...formData.value,
