@@ -3,6 +3,7 @@ import type {
   CtaContent,
   ExperienceContent,
   HeroContent,
+  SeoContent,
   StackContent,
   TestimonialContent,
   ThisSiteContent
@@ -12,18 +13,13 @@ import type {
  * Composable for fetching content from the API.
  * Content is fetched at build time for SSG.
  */
-export const useContent = () => {
-  const fetcher = <T>(key: string, endpoint: string) => {
-    return useAsyncData<T>(key, () => $fetch<T>(endpoint))
-  }
-
-  return {
-    getHero: () => fetcher<HeroContent>('content-hero', '/api/content/hero'),
-    getStacks: () => fetcher<StackContent[]>('content-stacks', '/api/content/stacks'),
-    getExperience: () => fetcher<ExperienceContent>('content-experience', '/api/content/experience'),
-    getTestimonials: () => fetcher<TestimonialContent[]>('content-testimonials', '/api/content/testimonials'),
-    getAbout: () => fetcher<AboutContent>('content-about', '/api/content/about'),
-    getThisSite: () => fetcher<ThisSiteContent>('content-this-site', '/api/content/thisSite'),
-    getCta: () => fetcher<CtaContent>('content-cta', '/api/content/cta')
-  }
-}
+export const useContent = () => ({
+  getHero: () => useAsyncData('content-hero', () => $fetch<HeroContent>('/api/content/hero')),
+  getStacks: () => useAsyncData('content-stacks', () => $fetch<StackContent[]>('/api/content/stacks')),
+  getExperience: () => useAsyncData('content-experience', () => $fetch<ExperienceContent>('/api/content/experience')),
+  getTestimonials: () => useAsyncData('content-testimonials', () => $fetch<TestimonialContent[]>('/api/content/testimonials')),
+  getAbout: () => useAsyncData('content-about', () => $fetch<AboutContent>('/api/content/about')),
+  getThisSite: () => useAsyncData('content-this-site', () => $fetch<ThisSiteContent>('/api/content/thisSite')),
+  getCta: () => useAsyncData('content-cta', () => $fetch<CtaContent>('/api/content/cta')),
+  getSeo: () => useAsyncData('content-seo', () => $fetch<SeoContent>('/api/content/seo'))
+})

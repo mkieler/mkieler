@@ -70,3 +70,19 @@ export interface CtaContent {
   description: string
 }
 
+export interface SeoContent {
+  title: string
+  description: string
+  ogImage: string
+  person: {
+    name: string
+    jobTitle: string
+    email: string
+  }
+  service: {
+    name: string
+    areaServed: string
+    serviceType: string
+  }
+}
+
