@@ -1,23 +1,32 @@
 <script setup lang="ts">
-
-const cms = useCMS()
+const content = useContent()
 const runtimeConfig = useRuntimeConfig()
 
-const [heroData, stacksData, experienceData, projectsData, testimonialsData, contactData] = await Promise.all([
-  cms.getHero(),
-  cms.getStacks(),
-  cms.getExperience(),
-  cms.getProjects(),
-  cms.getTestimonials(),
-  cms.getContact()
+const [
+  heroData,
+  stacksData,
+  experienceData,
+  testimonialsData,
+  aboutData,
+  thisSiteData,
+  ctaData
+] = await Promise.all([
+  content.getHero(),
+  content.getStacks(),
+  content.getExperience(),
+  content.getTestimonials(),
+  content.getAbout(),
+  content.getThisSite(),
+  content.getCta()
 ])
 
 const hero = heroData.data
 const stacks = stacksData.data
 const experience = experienceData.data
-const projects = projectsData.data
 const testimonials = testimonialsData.data
-const contact = contactData.data
+const about = aboutData.data
+const thisSite = thisSiteData.data
+const cta = ctaData.data
 
 const siteUrl = runtimeConfig.public.siteUrl || 'https://mkieler.dev'
 const canonicalUrl = `${siteUrl.replace(/\/$/, '')}/`
@@ -46,11 +55,11 @@ const personSchema = {
   '@type': 'Person',
   name: 'Mattias Kieler',
   url: canonicalUrl,
-  jobTitle: hero.value.headline || 'Fractional CTO og senior fullstack-udvikler',
+  jobTitle: hero.value?.headline || 'Fractional CTO og senior fullstack-udvikler',
   description: pageDescription,
   email: `mailto:${runtimeConfig.public.contactEmail}`,
   sameAs: sameAsLinks,
-  knowsAbout: stacks.value.map((stackItem) => stackItem.name)
+  knowsAbout: stacks.value?.map((stackItem) => stackItem.name) || []
 }
 
 const serviceSchema = {
@@ -67,13 +76,13 @@ const serviceSchema = {
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Samarbejdsmodeller',
-    itemListElement: experience.value.focusAreas.map((area) => ({
+    itemListElement: experience.value?.focusAreas.map((area) => ({
       '@type': 'Offer',
       itemOffered: {
         '@type': 'Service',
         name: area
       }
-    }))
+    })) || []
   }
 }
 
@@ -95,21 +104,16 @@ useHead({
     }
   ]
 })
-
-const footerNote = 'Dette site er statisk genereret med Nuxt, så siderne er forudbygget og cachet globalt for lav TTFB og stærke Core Web Vitals.'
-const footerChannels = computed(() => contact.value?.channels ?? [])
 </script>
 
 <template>
   <main>
     <FrontpageHero v-if="hero" :hero="hero" @open-contact-modal="$emit('open-contact-modal')" />
     <FrontpageExperience v-if="experience" :experience="experience" />
-    <FrontpageAbout />
+    <FrontpageAbout v-if="about" :about="about" />
     <FrontpageStatement v-if="stacks?.length" :stacks="stacks" @open-contact-modal="$emit('open-contact-modal')"/>
-    <!-- <FrontpageProjects v-if="projects?.length" :projects="projects" />
-    <FrontpageWhyMe v-if="experience?.performancePitch" :pitch="experience.performancePitch" /> -->
-    <FrontpageTestimonials :testimonials="testimonials" />
-    <FrontpageThisSite @open-contact-modal="$emit('open-contact-modal')"/>
-    <FrontpageBottomCta @open-contact-modal="$emit('open-contact-modal')"/>
+    <FrontpageTestimonials v-if="testimonials" :testimonials="testimonials" />
+    <FrontpageThisSite v-if="thisSite" :this-site="thisSite" @open-contact-modal="$emit('open-contact-modal')"/>
+    <FrontpageBottomCta v-if="cta" :cta="cta" @open-contact-modal="$emit('open-contact-modal')"/>
   </main>
 </template>

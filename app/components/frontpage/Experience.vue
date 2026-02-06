@@ -1,13 +1,9 @@
 <script setup lang="ts">
-import type { CmsExperienceContent } from '~/types/cms'
+import type { ExperienceContent } from '~/types/content'
 
 const props = defineProps<{
-  experience: CmsExperienceContent
+  experience: ExperienceContent
 }>()
-
-const halfOfSkills = Math.ceil(props.experience.skills.length / 2)
-const firstHalfSkills = props.experience.skills.slice(0, halfOfSkills)
-const secondHalfSkills = props.experience.skills.slice(halfOfSkills)
 </script>
 
 <template>
@@ -64,16 +60,8 @@ const secondHalfSkills = props.experience.skills.slice(halfOfSkills)
             <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
               Fra idé til system
             </h3>
-            <p>
-              Alt starter med en idé.
-              Mit arbejde er at gøre den til virkelighed – på en måde, der holder.
-            </p>
-            <p>
-              Mellem forretning og teknologi finder jeg balancen, hvor arkitektur bliver til værdi.
-            </p>
-            <p>
-              Når alt fungerer gnidningsfrit, mærker man det ikke.
-              Og det er præcis sådan, det skal være.
+            <p v-for="(paragraph, index) in props.experience.ideaToSystem" :key="index">
+              {{ paragraph }}
             </p>
           </div>
         </div>

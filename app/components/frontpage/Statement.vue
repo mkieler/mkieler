@@ -1,39 +1,21 @@
 <script setup lang="ts">
-import type { CmsStackContent } from '~/types/cms'
+import type { StackContent } from '~/types/content'
 
 const props = defineProps<{
-  stacks: CmsStackContent[]
+  stacks: StackContent[]
 }>()
-
-const features = ref([
-  {
-    title: 'Web applikationer',
-    description: 'Nuxt UI integrates with Nuxt Icon to access over 200,000+ icons from Iconify.',
-    icon: 'i-lucide-smile',
-  },
-  {
-    title: 'Fonts',
-    description: 'Nuxt UI integrates with Nuxt Fonts to provide plug-and-play font optimization.',
-    icon: 'i-lucide-a-large-small',
-  },
-  {
-    title: 'Color Mode',
-    description: 'Nuxt UI integrates with Nuxt Color Mode to switch between light and dark.',
-    icon: 'i-lucide-sun-moon',
-  }
-])
-
 </script>
 
 <template>
 
   <UPageSection
+    id="services"
     headline="YDELSER JEG TILBYDER & TEKNOLOGIER JEG ANBEFALER"
     title="Applikationer bygget med de rette teknologier"
     description="Jeg matcher teknologivalget ud fra budget, teamkapacitet og de resultater, I skal levere. Aldrig bare trends."
     :ui="{
-      headline: 'justify-start', 
-      description: 'text-left', 
+      headline: 'justify-start',
+      description: 'text-left',
       title: 'text-left lg:text-4xl',
       root: 'pt-20',
     }"

@@ -1,29 +1,9 @@
 <script setup lang="ts">
-import type { CmsHeroContent } from '~/types/cms'
+import type { HeroContent } from '~/types/content'
 
 const props = defineProps<{
-  hero: CmsHeroContent
+  hero: HeroContent
 }>()
-
-
-
-const bulletpoints = [
-  {
-    title: 'End to end ansvar',
-    description: 'Fra problemidentifikation til deployment',
-    icon: 'i-lucide-rocket'
-  },
-  {
-    title: 'Performance',
-    description: 'Performance-budgetter indarbejdet i hvert build og release.',
-    icon: 'i-lucide-gauge'
-  },
-  {
-    title: 'Sikkerhed',
-    description: 'Sikre fundamenter med autentifikation, audits og observability.',
-    icon: 'i-lucide-shield-check'
-  }
-]
 
 const badge = {
   color: 'neutral' as 'neutral',
@@ -83,7 +63,7 @@ const badge = {
       }"
       >
       <ul class="mt-4 space-y-7 text-gray-600 dark:text-gray-300">
-        <li v-for="point in bulletpoints" :key="point.title">
+        <li v-for="point in props.hero.bulletpoints" :key="point.title">
           <UPageFeature :title="point.title" :description="point.description" :icon="point.icon" />
         </li>
       </ul>

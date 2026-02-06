@@ -1,19 +1,21 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import type { CmsTestimonialContent } from '~/types/cms'
+import type { TestimonialContent } from '~/types/content'
 
 const props = defineProps<{
-  testimonials: CmsTestimonialContent[]
+  testimonials: TestimonialContent[]
 }>()
 
-const hasTestimonials = computed(() => props.testimonials.length > 0)
+const firstHalf = computed(() => props.testimonials.slice(0, Math.ceil(props.testimonials.length / 2)))
+const secondHalf = computed(() => props.testimonials.slice(Math.ceil(props.testimonials.length / 2)))
 </script>
 
 <template>
   <UPageSection
+    id="testimonials"
     headline="UDTALELSER"
-    title="Hvad samarbejdspartnere og kolleger siger"
+    title="Hvad samarbejdspartnere og kollegaer siger"
     description="Jeg værdsætter altid feedback og stræber efter at levere løsninger, der overstiger forventningerne."
     :ui="{
       container: 'max-w-full',
@@ -23,7 +25,7 @@ const hasTestimonials = computed(() => props.testimonials.length > 0)
         pause-on-hover
       >
         <UCard
-          v-for="testimonial in props.testimonials"
+          v-for="testimonial in firstHalf"
           :key="testimonial.id"
           :ui="{ body: 'space-y-4 p-6 w-100' }"
           variant="subtle"
@@ -48,7 +50,7 @@ const hasTestimonials = computed(() => props.testimonials.length > 0)
         pause-on-hover
       >
         <UCard
-          v-for="testimonial in props.testimonials"
+          v-for="testimonial in secondHalf"
           :key="testimonial.id"
           :ui="{ body: 'space-y-4 p-6 w-100' }"
           variant="subtle"

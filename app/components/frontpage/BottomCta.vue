@@ -1,8 +1,16 @@
+<script setup lang="ts">
+import type { CtaContent } from '~/types/content'
+
+const props = defineProps<{
+  cta: CtaContent
+}>()
+</script>
+
 <template>
     <UContainer class="py-20">
         <UPageCTA
-            title="Klar til at tage dit projekt til næste niveau?"
-            description="Uanset om du har brug for en freelancepartner eller en senior udvikler, der kan eje et projekt fra ende til ende, leverer jeg produktionsklar software og webapplikationer, som er skalerbare og performante."
+            :title="props.cta.title"
+            :description="props.cta.description"
             :ui="{
                 root: 'bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 dark:from-gray-900 dark:via-slate-800 dark:to-slate-700 rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg shadow-gray-900/10 dark:shadow-slate-900/20',
             }"

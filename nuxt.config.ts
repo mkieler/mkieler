@@ -56,7 +56,6 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      cmsBaseUrl: '',
       siteUrl: 'https://mkieler.com',
       linkedinUrl: 'https://www.linkedin.com/in/mattiaskieler',
       contactEmail: 'hello@mkieler.dev',
