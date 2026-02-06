@@ -8,6 +8,10 @@ export default defineNuxtConfig({
     '@nuxtjs/turnstile'
   ],
 
+  turnstile: {
+    siteKey: ''
+  },
+
   site: {
     url: 'https://mkieler.com',
     name: 'Mattias Kieler'
@@ -58,9 +62,7 @@ export default defineNuxtConfig({
       contactEmail: 'hello@mkieler.dev',
       resumeUrl: '/resume.pdf',
       githubUrl: 'https://github.com/mkieler',
-      turnstile: {
-        siteKey: '',
-      }
+      apiUrl: ''
     }
   },
 

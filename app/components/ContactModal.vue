@@ -1,6 +1,7 @@
 <script setup lang="ts">
     const toast = useToast();
-    
+    const config = useRuntimeConfig();
+
     const items = [
         { label: 'Generel forespørgsel', value: 'general' },
         { label: 'Samarbejde som freelancer', value: 'freelance' },
@@ -31,15 +32,14 @@
             return;
         }
         try {
-            const res = await $fetch<Response>('https://email.mkieler.com', {
+            const res = await $fetch<Response>(config.public.apiUrl as string, {
                 method: 'POST',
                 body: {
                     ...formData.value,
                     turnstileToken: turnstileToken.value
                 },
                 headers: {
-                    'Content-Type': 'application/json',
-                    'token': 'ae5f22dc-dede-428c-a3e5-2f8b0e30eb98'
+                    'Content-Type': 'application/json'
                 }
             })
 
