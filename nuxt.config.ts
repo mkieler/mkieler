@@ -62,7 +62,7 @@ export default defineNuxtConfig({
       contactEmail: 'hello@mkieler.dev',
       resumeUrl: '/resume.pdf',
       githubUrl: 'https://github.com/mkieler',
-      apiUrl: ''
+      apiUrl: process.env.NUXT_PUBLIC_API_URL || 'https://api.mkieler.com' 
     }
   },
 
