@@ -66,7 +66,20 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/': { prerender: true }
+    '/': { prerender: true },
+    '/services': { prerender: true },
+    '/services/**': { prerender: true },
+    '/hosting': { prerender: true },
+    '/koebenhavn': { prerender: true },
+    '/koebenhavn/**': { prerender: true },
+    '/aarhus': { prerender: true },
+    '/aarhus/**': { prerender: true },
+    '/odense': { prerender: true },
+    '/odense/**': { prerender: true },
+    '/aalborg': { prerender: true },
+    '/aalborg/**': { prerender: true },
+    '/danmark': { prerender: true },
+    '/danmark/**': { prerender: true }
   },
 
   nitro: {

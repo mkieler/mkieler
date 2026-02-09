@@ -1,43 +1,24 @@
 <script setup lang="ts">
 const content = useContent()
+const { data: homepage } = await content.getHomepage()
 
-const [
-  { data: hero },
-  { data: stacks },
-  { data: experience },
-  { data: testimonials },
-  { data: about },
-  { data: thisSite },
-  { data: cta },
-  { data: seo }
-] = await Promise.all([
-  content.getHero(),
-  content.getStacks(),
-  content.getExperience(),
-  content.getTestimonials(),
-  content.getAbout(),
-  content.getThisSite(),
-  content.getCta(),
-  content.getSeo()
-])
-
-if (seo.value) {
+if (homepage.value) {
   useSeo({
-    seo: seo.value,
-    stacks: stacks.value || undefined,
-    experience: experience.value || undefined
+    seo: homepage.value.seo,
+    stacks: homepage.value.stacks,
+    experience: homepage.value.experience
   })
 }
 </script>
 
 <template>
-  <main>
-    <FrontpageHero v-if="hero" :hero="hero" @open-contact-modal="$emit('open-contact-modal')" />
-    <FrontpageExperience v-if="experience" :experience="experience" />
-    <FrontpageAbout v-if="about" :about="about" />
-    <FrontpageStatement v-if="stacks?.length" :stacks="stacks" @open-contact-modal="$emit('open-contact-modal')" />
-    <FrontpageTestimonials v-if="testimonials" :testimonials="testimonials" />
-    <FrontpageThisSite v-if="thisSite" :this-site="thisSite" @open-contact-modal="$emit('open-contact-modal')" />
-    <FrontpageBottomCta v-if="cta" :cta="cta" @open-contact-modal="$emit('open-contact-modal')" />
+  <main v-if="homepage">
+    <FrontpageHero :hero="homepage.hero" @open-contact-modal="$emit('open-contact-modal')" />
+    <FrontpageExperience :experience="homepage.experience" />
+    <FrontpageAbout :about="homepage.about" />
+    <FrontpageStatement :stacks="homepage.stacks" @open-contact-modal="$emit('open-contact-modal')" />
+    <FrontpageTestimonials :testimonials="homepage.testimonials" />
+    <FrontpageThisSite :this-site="homepage.thisSite" @open-contact-modal="$emit('open-contact-modal')" />
+    <FrontpageBottomCta :cta="homepage.cta" @open-contact-modal="$emit('open-contact-modal')" />
   </main>
 </template>

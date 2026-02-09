@@ -52,7 +52,7 @@ const props = defineProps<{
               Kompetencer og værktøjer
             </h3>
             <div class="mt-4 flex flex-wrap gap-2">
-              <UiStackPill v-for="skill in props.experience.skills" :key="skill" :label="skill" />
+              <SharedStackPill v-for="skill in props.experience.skills" :key="skill" :label="skill" />
             </div>
           </div>
 

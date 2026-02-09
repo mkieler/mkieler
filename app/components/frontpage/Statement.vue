@@ -50,7 +50,7 @@ const props = defineProps<{
           </li>
         </ul>
         <div class="flex flex-wrap gap-2 pt-2">
-          <UiStackPill v-for="tag in stack.tags" :key="tag" :label="tag" />
+          <SharedStackPill v-for="tag in stack.tags" :key="tag" :label="tag" />
         </div>
 
         <UButton

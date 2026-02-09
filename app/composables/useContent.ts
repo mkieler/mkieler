@@ -1,12 +1,8 @@
 import type {
-  AboutContent,
-  CtaContent,
-  ExperienceContent,
-  HeroContent,
-  SeoContent,
-  StackContent,
-  TestimonialContent,
-  ThisSiteContent
+  HomepageContent,
+  LocationContent,
+  ServiceContent,
+  ServicesPageContent
 } from '~/types/content'
 
 /**
@@ -14,12 +10,15 @@ import type {
  * Content is fetched at build time for SSG.
  */
 export const useContent = () => ({
-  getHero: () => useAsyncData('content-hero', () => $fetch<HeroContent>('/api/content/hero')),
-  getStacks: () => useAsyncData('content-stacks', () => $fetch<StackContent[]>('/api/content/stacks')),
-  getExperience: () => useAsyncData('content-experience', () => $fetch<ExperienceContent>('/api/content/experience')),
-  getTestimonials: () => useAsyncData('content-testimonials', () => $fetch<TestimonialContent[]>('/api/content/testimonials')),
-  getAbout: () => useAsyncData('content-about', () => $fetch<AboutContent>('/api/content/about')),
-  getThisSite: () => useAsyncData('content-this-site', () => $fetch<ThisSiteContent>('/api/content/thisSite')),
-  getCta: () => useAsyncData('content-cta', () => $fetch<CtaContent>('/api/content/cta')),
-  getSeo: () => useAsyncData('content-seo', () => $fetch<SeoContent>('/api/content/seo'))
+  // Homepage
+  getHomepage: () => useAsyncData('content-homepage', () => $fetch<HomepageContent>('/api/content/homepage')),
+
+  // Services
+  getServices: () => useAsyncData('content-services', () => $fetch<ServiceContent[]>('/api/content/services')),
+  getService: (slug: string) => useAsyncData(`content-service-${slug}`, () => $fetch<ServiceContent | null>(`/api/content/services/${slug}`)),
+  getServicesPage: () => useAsyncData('content-services-page', () => $fetch<ServicesPageContent>('/api/content/services/page')),
+
+  // Locations
+  getLocations: () => useAsyncData('content-locations', () => $fetch<LocationContent[]>('/api/content/locations')),
+  getLocation: (slug: string) => useAsyncData(`content-location-${slug}`, () => $fetch<LocationContent | null>(`/api/content/locations/${slug}`))
 })

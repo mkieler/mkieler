@@ -86,3 +86,79 @@ export interface SeoContent {
   }
 }
 
+export interface ServiceFaq {
+  question: string
+  answer: string
+}
+
+export interface ServiceProcess {
+  step: number
+  title: string
+  description: string
+}
+
+export interface ServiceContent {
+  slug: string
+  title: string
+  headline: string
+  description: string
+  longDescription: string
+  features: string[]
+  technologies: string[]
+  benefits: string[]
+  icon: string
+  relatedServices?: string[]
+  process?: ServiceProcess[]
+  useCases?: string[]
+  faq?: ServiceFaq[]
+  seo?: {
+    title: string
+    description: string
+    ogTitle: string
+    ogDescription: string
+  }
+}
+
+export interface LocationContent {
+  slug: string
+  city: string
+  suffix: string
+  headline: string
+  description: string
+  longDescription?: string
+  nearbyAreas?: string[]
+  seo?: {
+    title: string
+    description: string
+    ogTitle: string
+    ogDescription: string
+  }
+}
+
+export interface ServicesPageContent {
+  title: string
+  headline: string
+  description: string
+  seo: {
+    title: string
+    description: string
+    ogTitle: string
+    ogDescription: string
+  }
+  cta: {
+    text: string
+    buttonLabel: string
+  }
+}
+
+export interface HomepageContent {
+  seo: SeoContent
+  hero: HeroContent
+  experience: ExperienceContent
+  about: AboutContent
+  stacks: StackContent[]
+  testimonials: TestimonialContent[]
+  thisSite: ThisSiteContent
+  cta: CtaContent
+}
+

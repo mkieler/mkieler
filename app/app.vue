@@ -13,13 +13,13 @@ const showContactModal = ref(false)
 
 <template>
   <UApp>
-    <ContactModal v-model:open="showContactModal" />
-    <AppHeader @open-contact-modal="showContactModal = true" />
+    <SharedContactModal v-model:open="showContactModal" />
+    <SharedHeader @open-contact-modal="showContactModal = true" />
 
     <UMain>
       <NuxtPage @open-contact-modal="showContactModal = true" />
     </UMain>
 
-    <AppFooter />
+    <SharedFooter />
   </UApp>
 </template>

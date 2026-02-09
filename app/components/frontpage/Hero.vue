@@ -54,7 +54,7 @@ const badge = {
         >
       </div>
     </template>
-    <LazyStarsBg />
+    <LazySharedStarsBg />
     <UPageCard 
       title="Det får du i et samarbejde med mig" 
       :ui="{
