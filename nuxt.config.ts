@@ -69,7 +69,6 @@ export default defineNuxtConfig({
     '/': { prerender: true },
     '/services': { prerender: true },
     '/services/**': { prerender: true },
-    '/hosting': { prerender: true },
     '/koebenhavn': { prerender: true },
     '/koebenhavn/**': { prerender: true },
     '/aarhus': { prerender: true },
