@@ -1,14 +1,16 @@
 <script setup lang="ts">
 const year = new Date().getFullYear()
 
-const serviceLinks = [
-  { label: 'Webudvikling', to: '/services/webudvikling' },
-  { label: 'Web Applikationer', to: '/services/webapp' },
-  { label: 'Webshop', to: '/services/webshop' },
-  { label: 'Frontend', to: '/services/frontend' },
-  { label: 'Backend', to: '/services/backend' },
-  { label: 'Hosting', to: '/services/hosting' }
-]
+const content = useContent()
+const { data: services } = await content.getServices()
+
+const serviceLinks = computed(() => {
+  if (!services.value) return []
+  return services.value.map(s => ({
+    label: s.title,
+    to: `/services/${s.slug}`
+  }))
+})
 
 const quickLinks = [
   { label: 'Kompetencer', to: '/#experience' },

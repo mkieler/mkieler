@@ -38,7 +38,7 @@ const props = defineProps<{
               Fokusområder
             </h3>
             <ul class="text-sm md:text-base mt-4 space-y-2 text-gray-600 dark:text-gray-300">
-              <li v-for="area in props.experience.focusAreas" :key="area" class="flex items-start gap-2">
+              <li v-for="area in props.experience.focusArea" :key="area" class="flex items-start gap-2">
                 <UIcon name="i-lucide-target" class="h-4 w-4 text-primary-500 mr-2" />
                 <span>{{ area }}</span>
               </li>
@@ -52,7 +52,7 @@ const props = defineProps<{
               Kompetencer og værktøjer
             </h3>
             <div class="mt-4 flex flex-wrap gap-2">
-              <SharedStackPill v-for="skill in props.experience.skills" :key="skill" :label="skill" />
+              <SharedStackPill v-for="skill in props.experience.skill" :key="skill" :label="skill" />
             </div>
           </div>
 
@@ -60,7 +60,7 @@ const props = defineProps<{
             <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
               Fra idé til system
             </h3>
-            <p v-for="(paragraph, index) in props.experience.ideaToSystem" :key="index">
+            <p v-for="(paragraph, index) in props.experience.quote" :key="index">
               {{ paragraph }}
             </p>
           </div>

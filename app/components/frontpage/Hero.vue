@@ -63,7 +63,7 @@ const badge = {
       }"
       >
       <ul class="mt-4 space-y-7 text-gray-600 dark:text-gray-300">
-        <li v-for="point in props.hero.bulletpoints" :key="point.title">
+        <li v-for="point in props.hero.bulletpoint" :key="point.title">
           <UPageFeature :title="point.title" :description="point.description" :icon="point.icon" />
         </li>
       </ul>

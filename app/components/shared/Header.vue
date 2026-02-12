@@ -3,32 +3,36 @@ const emit = defineEmits<{
   'open-contact-modal': []
 }>()
 
-const navigationItems = [
+const content = useContent()
+const { data: services } = await content.getServices()
+
+const serviceChildren = computed(() => {
+  const items = [{ label: 'Alle services', to: '/services', icon: 'i-lucide-grid-2x2' }]
+  if (services.value) {
+    items.push(...services.value.map(s => ({
+      label: s.title,
+      to: `/services/${s.slug}`,
+      icon: s.icon
+    })))
+  }
+  return items
+})
+
+const navigationItems = computed(() => [
   { label: 'Kompetencer', to: '/#experience', active: false },
   { label: 'Om mig', to: '/#about', active: false },
   {
     label: 'Services',
     active: false,
-    children: [
-      { label: 'Alle services', to: '/services' },
-      { label: 'Webudvikling', to: '/services/webudvikling' },
-      { label: 'Web Applikationer', to: '/services/webapp' },
-      { label: 'Webshop & E-commerce', to: '/services/webshop' },
-      { label: 'Frontend Udvikling', to: '/services/frontend' },
-      { label: 'Backend Udvikling', to: '/services/backend' },
-      { label: 'API Udvikling', to: '/services/api-udvikling' },
-      { label: 'Mobil App', to: '/services/mobil-app' },
-      { label: 'Hosting', to: '/hosting' }
-    ]
+    children: serviceChildren.value
   },
   { label: 'Udtalelser', to: '/#testimonials', active: false }
-]
+])
 
 const mobileNavigationItems = [
   { label: 'Kompetencer', to: '/#experience' },
   { label: 'Om mig', to: '/#about' },
   { label: 'Services', to: '/services' },
-  { label: 'Hosting', to: '/hosting' },
   { label: 'Udtalelser', to: '/#testimonials' }
 ]
 </script>
@@ -41,7 +45,15 @@ const mobileNavigationItems = [
       </NuxtLink>
     </template>
 
-    <UNavigationMenu :items="navigationItems" class="hidden md:inline-flex" />
+    <UNavigationMenu
+      :items="navigationItems"
+      class="hidden md:inline-flex"
+      :ui="{
+        viewportWrapper: 'w-auto left-1/2 -translate-x-1/2',
+        viewport: 'w-[800px]',
+        childList: 'grid grid-cols-1 md:grid-cols-3 gap-4',
+      }"
+    />
 
     <template #right>
       <UColorModeButton />

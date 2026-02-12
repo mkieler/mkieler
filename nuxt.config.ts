@@ -1,4 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
+// Disable SSL verification in development for self-signed certificates
+if (process.env.NODE_ENV === 'development') {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+}
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
@@ -68,17 +74,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { prerender: true },
     '/services': { prerender: true },
-    '/services/**': { prerender: true },
-    '/koebenhavn': { prerender: true },
-    '/koebenhavn/**': { prerender: true },
-    '/aarhus': { prerender: true },
-    '/aarhus/**': { prerender: true },
-    '/odense': { prerender: true },
-    '/odense/**': { prerender: true },
-    '/aalborg': { prerender: true },
-    '/aalborg/**': { prerender: true },
-    '/danmark': { prerender: true },
-    '/danmark/**': { prerender: true }
+    '/services/**': { prerender: true }
   },
 
   nitro: {

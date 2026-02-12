@@ -10,55 +10,46 @@ export interface Bulletpoint {
 }
 
 export interface HeroContent {
+  name: string
   eyebrow: string
   headline: string
   supportingText: string
-  bulletpoints: Bulletpoint[]
-}
-
-export interface StackContent {
-  id: number
-  slug: string
-  name: string
-  headline: string
-  description: string
-  bullets: string[]
-  tags: string[]
+  bulletpoint: Bulletpoint[]
 }
 
 export interface ExperienceContent {
+  name: string
   headline: string
   summary: string
   narrative: string
   primaryMetric: string
-  focusAreas: string[]
-  skills: string[]
-  ideaToSystem: string[]
+  focusArea: string[]
+  skill: string[]
+  quote: string[]
 }
 
 export interface TestimonialAuthor {
   name: string
-  role: string
-  company?: string
+  jobTitle: string
+  image?: string
 }
 
 export interface TestimonialContent {
-  id: number
   quote: string
   author: TestimonialAuthor
 }
 
 export interface AboutContent {
+  name: string
   headline: string
   title: string
-  paragraphs: string[]
-  image: {
-    src: string
-    alt: string
-  }
+  paragraph: string[]
+  imageSrc: string
+  imageAlt: string
 }
 
 export interface ThisSiteContent {
+  name: string
   headline: string
   title: string
   description: string
@@ -66,24 +57,95 @@ export interface ThisSiteContent {
 }
 
 export interface CtaContent {
+  name: string
   title: string
   description: string
+  buttonLabel: string
+  buttonUrl: string
 }
 
 export interface SeoContent {
   title: string
   description: string
+  ogTitle: string
+  ogDescription: string
   ogImage: string
-  person: {
-    name: string
-    jobTitle: string
-    email: string
+}
+
+export interface SchemaOrgPerson {
+  '@type': string
+  name: string
+  jobTitle: string
+  email: string
+  url: string
+}
+
+export interface SchemaOrgLocalBusiness {
+  '@type': string
+  name: string
+  description: string
+  url: string
+  areaServed: string
+  priceRange: string
+}
+
+export interface SchemaOrgWebSite {
+  '@type': string
+  name: string
+  url: string
+}
+
+export interface SchemaOrgPage {
+  '@type': string
+  name: string
+  description: string
+  url: string
+}
+
+export interface SchemaOrgContent {
+  global: {
+    person: SchemaOrgPerson
+    localBusiness: SchemaOrgLocalBusiness
+    webSite: SchemaOrgWebSite
   }
-  service: {
+  page: SchemaOrgPage
+}
+
+export interface SchemaOrgService {
+  '@type': string
+  name: string
+  description: string
+  url: string
+  provider: {
+    '@type': string
     name: string
-    areaServed: string
-    serviceType: string
   }
+  areaServed?: {
+    '@type': string
+    name: string
+  }
+  serviceType?: string
+}
+
+export interface SchemaOrgBreadcrumb {
+  '@type': string
+  itemListElement: Array<{
+    '@type': string
+    position: number
+    name: string
+    item: string
+  }>
+}
+
+export interface ServiceSchemaOrgContent {
+  service: SchemaOrgService
+  breadcrumb: SchemaOrgBreadcrumb
+}
+
+export interface AuthorContent {
+  name: string
+  jobTitle: string
+  image: string
 }
 
 export interface ServiceFaq {
@@ -92,7 +154,6 @@ export interface ServiceFaq {
 }
 
 export interface ServiceProcess {
-  step: number
   title: string
   description: string
 }
@@ -100,65 +161,36 @@ export interface ServiceProcess {
 export interface ServiceContent {
   slug: string
   title: string
-  headline: string
+  headline?: string
   description: string
   longDescription: string
-  features: string[]
-  technologies: string[]
-  benefits: string[]
   icon: string
-  relatedServices?: string[]
+  technologies?: string[]
+  features?: string[]
+  benefits?: string[]
   process?: ServiceProcess[]
-  useCases?: string[]
   faq?: ServiceFaq[]
-  seo?: {
-    title: string
-    description: string
-    ogTitle: string
-    ogDescription: string
-  }
-}
-
-export interface LocationContent {
-  slug: string
-  city: string
-  suffix: string
-  headline: string
-  description: string
-  longDescription?: string
-  nearbyAreas?: string[]
-  seo?: {
-    title: string
-    description: string
-    ogTitle: string
-    ogDescription: string
-  }
+  relatedServices?: string[]
+  useCases?: string[]
+  seo?: SeoContent
+  schemaOrg?: ServiceSchemaOrgContent
 }
 
 export interface ServicesPageContent {
+  seo: SeoContent
+  schemaOrg: SchemaOrgContent
   title: string
   headline: string
   description: string
-  seo: {
-    title: string
-    description: string
-    ogTitle: string
-    ogDescription: string
-  }
-  cta: {
-    text: string
-    buttonLabel: string
-  }
 }
 
 export interface HomepageContent {
   seo: SeoContent
+  schemaOrg: SchemaOrgContent
+  author: AuthorContent
   hero: HeroContent
   experience: ExperienceContent
   about: AboutContent
-  stacks: StackContent[]
-  testimonials: TestimonialContent[]
   thisSite: ThisSiteContent
   cta: CtaContent
 }
-

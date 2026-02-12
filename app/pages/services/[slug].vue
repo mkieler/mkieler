@@ -5,7 +5,6 @@ const slug = route.params.slug as string
 
 const { data: service } = await content.getService(slug)
 const { data: services } = await content.getServices()
-const { data: locations } = await content.getLocations()
 
 if (!service.value) {
   throw createError({ statusCode: 404, message: 'Service ikke fundet' })
@@ -15,16 +14,47 @@ const relatedServices = computed(() =>
   services.value?.filter(s => s.slug !== slug).slice(0, 3) || []
 )
 
-useSeoMeta({
-  title: `${service.value.title} | Mattias Kieler`,
-  description: service.value.description,
-  ogTitle: `${service.value.title} | Mattias Kieler`,
-  ogDescription: service.value.description
-})
+// Use SEO data from API if available
+if (service.value.seo) {
+  useSeoMeta({
+    title: service.value.seo.title,
+    description: service.value.seo.description,
+    ogTitle: service.value.seo.ogTitle,
+    ogDescription: service.value.seo.ogDescription
+  })
+} else {
+  useSeoMeta({
+    title: `${service.value.title} | Mattias Kieler`,
+    description: service.value.description,
+    ogTitle: `${service.value.title} | Mattias Kieler`,
+    ogDescription: service.value.description
+  })
+}
+
+// Use schemaOrg from API if available
+const schemaOrgScripts = []
+if (service.value.schemaOrg?.service) {
+  schemaOrgScripts.push({
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      ...service.value.schemaOrg.service
+    })
+  })
+}
+if (service.value.schemaOrg?.breadcrumb) {
+  schemaOrgScripts.push({
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      ...service.value.schemaOrg.breadcrumb
+    })
+  })
+}
 
 useHead({
   link: [{ rel: 'canonical', href: `https://mkieler.com/services/${slug}` }],
-  script: [
+  script: schemaOrgScripts.length ? schemaOrgScripts : [
     {
       type: 'application/ld+json',
       innerHTML: JSON.stringify({
@@ -56,12 +86,12 @@ useHead({
       :title="service.title"
       :description="service.headline"
       :ui="{
-        root: 'py-12 bg-gradient-to-b from-primary-50 to-transparent dark:from-primary-950/20',
+        root: 'bg-gradient-to-b from-primary-50 to-transparent dark:from-primary-950/20',
         title: 'text-3xl sm:text-4xl',
       }"
     />
 
-    <UContainer class="py-12">
+    <UContainer class="pb-12">
       <div class="grid gap-12 lg:grid-cols-3">
         <div class="lg:col-span-2 space-y-8">
           <div>
@@ -137,21 +167,6 @@ useHead({
             />
           </UCard>
 
-          <UCard v-if="locations?.length" :ui="{ body: 'space-y-4' }">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
-              {{ service.title }} i din by
-            </h3>
-            <ul class="space-y-2">
-              <li v-for="location in locations" :key="location.slug">
-                <NuxtLink
-                  :to="`/${location.slug}/${service.slug}`"
-                  class="text-primary-600 dark:text-primary-400 hover:underline text-sm"
-                >
-                  {{ service.title }} {{ location.suffix }}
-                </NuxtLink>
-              </li>
-            </ul>
-          </UCard>
         </div>
       </div>
 

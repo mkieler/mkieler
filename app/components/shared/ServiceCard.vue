@@ -3,15 +3,9 @@ import type { ServiceContent } from '~/types/content'
 
 const props = defineProps<{
   service: ServiceContent
-  locationSlug?: string
 }>()
 
-const href = computed(() => {
-  if (props.locationSlug) {
-    return `/${props.locationSlug}/${props.service.slug}`
-  }
-  return `/services/${props.service.slug}`
-})
+const href = computed(() => `/services/${props.service.slug}`)
 </script>
 
 <template>

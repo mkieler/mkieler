@@ -7,11 +7,9 @@ const [{ data: page }, { data: services }] = await Promise.all([
 ])
 
 if (page.value) {
-  useSeoMeta({
-    title: page.value.seo.title,
-    description: page.value.seo.description,
-    ogTitle: page.value.seo.ogTitle,
-    ogDescription: page.value.seo.ogDescription
+  useSeo({
+    seo: page.value.seo,
+    schemaOrg: page.value.schemaOrg
   })
 }
 
@@ -47,17 +45,6 @@ useHead({
         />
       </div>
 
-      <div class="mt-16 text-center">
-        <p class="text-gray-600 dark:text-gray-400 mb-6">
-          {{ page.cta.text }}
-        </p>
-        <UButton
-          :label="page.cta.buttonLabel"
-          color="primary"
-          size="lg"
-          @click="$emit('open-contact-modal')"
-        />
-      </div>
     </UContainer>
   </div>
 </template>

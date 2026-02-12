@@ -25,13 +25,13 @@ const secondHalf = computed(() => props.testimonials.slice(Math.ceil(props.testi
         pause-on-hover
       >
         <UCard
-          v-for="testimonial in firstHalf"
-          :key="testimonial.id"
+          v-for="(testimonial, index) in firstHalf"
+          :key="index"
           :ui="{ body: 'space-y-4 p-6 w-100' }"
           variant="subtle"
         >
           <blockquote class="text-lg italic text-gray-700 dark:text-gray-300 line-clamp-3">
-            “{{ testimonial.quote }}”
+            "{{ testimonial.quote }}"
           </blockquote>
 
           <div>
@@ -39,7 +39,7 @@ const secondHalf = computed(() => props.testimonials.slice(Math.ceil(props.testi
               {{ testimonial.author.name }}
             </p>
             <p class="text-sm text-gray-500 dark:text-gray-400">
-              {{ testimonial.author.role }}<span v-if="testimonial.author.company"> · {{ testimonial.author.company }}</span>
+              {{ testimonial.author.jobTitle }}
             </p>
           </div>
         </UCard>
@@ -50,13 +50,13 @@ const secondHalf = computed(() => props.testimonials.slice(Math.ceil(props.testi
         pause-on-hover
       >
         <UCard
-          v-for="testimonial in secondHalf"
-          :key="testimonial.id"
+          v-for="(testimonial, index) in secondHalf"
+          :key="index"
           :ui="{ body: 'space-y-4 p-6 w-100' }"
           variant="subtle"
-            >
+        >
           <blockquote class="text-lg italic text-gray-700 dark:text-gray-300 line-clamp-3">
-            “{{ testimonial.quote }}”
+            "{{ testimonial.quote }}"
           </blockquote>
 
           <div>
@@ -64,7 +64,7 @@ const secondHalf = computed(() => props.testimonials.slice(Math.ceil(props.testi
               {{ testimonial.author.name }}
             </p>
             <p class="text-sm text-gray-500 dark:text-gray-400">
-              {{ testimonial.author.role }}<span v-if="testimonial.author.company"> · {{ testimonial.author.company }}</span>
+              {{ testimonial.author.jobTitle }}
             </p>
           </div>
         </UCard>
