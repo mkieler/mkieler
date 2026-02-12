@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import type { StackContent } from '~/types/content'
+import type { ServiceContent } from '~/types/content'
 
 const props = defineProps<{
-  stacks: StackContent[]
+  services: ServiceContent[]
 }>()
 </script>
 
 <template>
-
   <UPageSection
     id="services"
-    headline="YDELSER JEG TILBYDER & TEKNOLOGIER JEG ANBEFALER"
-    title="Applikationer bygget med de rette teknologier"
+    headline="YDELSER JEG TILBYDER"
+    title="Services der matcher dine behov"
     description="Jeg matcher teknologivalget ud fra budget, teamkapacitet og de resultater, I skal levere. Aldrig bare trends."
     :ui="{
       headline: 'justify-start',
@@ -19,50 +18,48 @@ const props = defineProps<{
       title: 'text-left lg:text-4xl',
       root: 'pt-20',
     }"
-    
   >
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-2 mb-12">
       <UCard
-        v-for="stack in props.stacks"
-        :key="stack.headline"
-        :ui="{ 
+        v-for="service in props.services"
+        :key="service.slug"
+        :ui="{
           root: 'border border-primary-500/40 dark:border-primary-dark',
           body: 'grid flex-col gap-4 justify-between h-full',
         }"
         variant="subtle"
       >
-        <h3 class="text-3xl font-bold text-gray-900 dark:text-gray-100">
-          {{ stack.name }}
-        </h3>
-
-        <p class="text-gray-600 dark:text-gray-400">
-          {{ stack.headline }}
-        </p>
-
-        <p class="text-gray-600 dark:text-gray-400">
-          {{ stack.description }}
-        </p>
-
-        <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-          <li v-for="bullet in stack.bullets" :key="bullet" class="flex items-start gap-2">
-            <UIcon name="i-lucide-check" class="mt-1 h-4 w-4 text-primary-500" />
-            <span>{{ bullet }}</span>
-          </li>
-        </ul>
-        <div class="flex flex-wrap gap-2 pt-2">
-          <UiStackPill v-for="tag in stack.tags" :key="tag" :label="tag" />
+        <div class="flex items-center gap-3">
+          <UIcon v-if="service.icon" :name="service.icon" class="h-8 w-8 text-primary-500" />
+          <h3 class="text-3xl font-bold text-gray-900 dark:text-gray-100">
+            {{ service.title }}
+          </h3>
         </div>
 
-        <UButton
-          variant="solid"
-          color="primary"
-          size="xl"
-          class="mt-10 flex w-full justify-center"
-          @click="$emit('open-contact-modal')"
+        <p class="text-gray-600 dark:text-gray-400">
+          {{ service.description }}
+        </p>
+
+        <NuxtLink
+          :to="`/services/${service.slug}`"
+          class="text-primary-500 hover:text-primary-600 font-medium flex items-center gap-1"
         >
-          Kontakt mig for at høre mere
-        </UButton>
+          Læs mere
+          <UIcon name="i-lucide-arrow-right" class="h-4 w-4" />
+        </NuxtLink>
       </UCard>
+    </div>
+
+    <div class="flex justify-center">
+      <UButton
+        variant="outline"
+        color="primary"
+        size="xl"
+        to="/services"
+        trailing-icon="i-lucide-arrow-right"
+      >
+        Se alle services
+      </UButton>
     </div>
   </UPageSection>
 </template>

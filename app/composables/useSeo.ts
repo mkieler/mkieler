@@ -1,15 +1,14 @@
-import type { SeoContent, StackContent, ExperienceContent } from '~/types/content'
+import type { SeoContent, SchemaOrgContent } from '~/types/content'
 
 interface UseSeoOptions {
   seo: SeoContent
-  stacks?: StackContent[]
-  experience?: ExperienceContent
+  schemaOrg: SchemaOrgContent
 }
 
 /**
  * Composable for setting up SEO meta tags and structured data.
  */
-export const useSeo = ({ seo, stacks, experience }: UseSeoOptions) => {
+export const useSeo = ({ seo, schemaOrg }: UseSeoOptions) => {
   const runtimeConfig = useRuntimeConfig()
   const siteUrl = runtimeConfig.public.siteUrl || 'https://mkieler.dev'
   const canonicalUrl = `${siteUrl.replace(/\/$/, '')}/`
@@ -18,12 +17,12 @@ export const useSeo = ({ seo, stacks, experience }: UseSeoOptions) => {
   useSeoMeta({
     title: seo.title,
     description: seo.description,
-    ogTitle: seo.title,
-    ogDescription: seo.description,
+    ogTitle: seo.ogTitle || seo.title,
+    ogDescription: seo.ogDescription || seo.description,
     ogUrl: canonicalUrl,
     ogImage,
-    twitterTitle: seo.title,
-    twitterDescription: seo.description,
+    twitterTitle: seo.ogTitle || seo.title,
+    twitterDescription: seo.ogDescription || seo.description,
     twitterImage: ogImage,
     twitterCard: 'summary_large_image'
   })
@@ -33,40 +32,26 @@ export const useSeo = ({ seo, stacks, experience }: UseSeoOptions) => {
     runtimeConfig.public.githubUrl
   ].filter(Boolean)
 
+  // Build Person schema from API data
   const personSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: seo.person.name,
+    ...schemaOrg.global.person,
     url: canonicalUrl,
-    jobTitle: seo.person.jobTitle,
-    description: seo.description,
-    email: `mailto:${seo.person.email}`,
-    sameAs: sameAsLinks,
-    knowsAbout: stacks?.map((s) => s.name) || []
+    sameAs: sameAsLinks
   }
 
-  const serviceSchema = {
+  // Build LocalBusiness schema from API data
+  const localBusinessSchema = {
     '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
-    name: seo.service.name,
-    url: canonicalUrl,
-    areaServed: seo.service.areaServed,
-    serviceType: seo.service.serviceType,
-    provider: {
-      '@type': 'Person',
-      name: seo.person.name
-    },
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Samarbejdsmodeller',
-      itemListElement: experience?.focusAreas.map((area) => ({
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: area
-        }
-      })) || []
-    }
+    ...schemaOrg.global.localBusiness,
+    url: canonicalUrl
+  }
+
+  // Build WebPage schema from API data
+  const webPageSchema = {
+    '@context': 'https://schema.org',
+    ...schemaOrg.page,
+    url: canonicalUrl
   }
 
   useHead({
@@ -74,7 +59,8 @@ export const useSeo = ({ seo, stacks, experience }: UseSeoOptions) => {
     meta: [{ name: 'robots', content: 'index,follow' }],
     script: [
       { type: 'application/ld+json', innerHTML: JSON.stringify(personSchema) },
-      { type: 'application/ld+json', innerHTML: JSON.stringify(serviceSchema) }
+      { type: 'application/ld+json', innerHTML: JSON.stringify(localBusinessSchema) },
+      { type: 'application/ld+json', innerHTML: JSON.stringify(webPageSchema) }
     ]
   })
 }

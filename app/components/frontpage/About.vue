@@ -23,14 +23,14 @@ const props = defineProps<{
     >
         <template #description>
             <div class="flex flex-col gap-3">
-                <p v-for="(paragraph, index) in props.about.paragraphs" :key="index">
+                <p v-for="(paragraph, index) in props.about.paragraph" :key="index">
                     {{ paragraph }}
                 </p>
             </div>
         </template>
         <img
             src="~/assets/img/mig.png"
-            :alt="props.about.image.alt"
+            :alt="props.about.imageAlt"
             class="rounded-xl object-cover shadow-xl shadow-gray-900/50 dark:shadow-slate-900/70 lg:max-h-170 max-h-100 w-full sm:max-w-100 lg:max-w-full"
             loading="lazy"
             decoding="async"
